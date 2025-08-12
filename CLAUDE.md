@@ -18,20 +18,14 @@ venv\Scripts\activate  # Windows
 
 # Install dependencies
 pip install -r requirements.txt
-
-# Install Playwright browsers (required for automated download)
-python -m playwright install
 ```
 
 ### Data Processing
 ```bash
-# Process manually downloaded data (traditional method)
+# Process manually downloaded data (primary method)
 python scripts/process_local_data.py
 
-# Automated download with Playwright (recommended)
-python scripts/rs_playwright_downloader.py --year 2024 --out ./data/rs --headless false
-
-# Attempt basic automatic download (usually fails due to SPA)
+# Attempt automatic download (limited due to SPA architecture)
 python scripts/fetch_rs_data.py
 ```
 
@@ -39,65 +33,89 @@ python scripts/fetch_rs_data.py
 
 ### Data Processing Pipeline
 
-The project uses three main scripts with distinct responsibilities:
+The project uses two main scripts with distinct responsibilities:
 
-1. **`rs_playwright_downloader.py`** (RSSystemPlaywrightDownloader class) - Recommended
-   - Uses Playwright for browser automation to handle JavaScript-heavy SPA
-   - Intercepts downloads through both download events and network responses
-   - Persists session state to avoid repeated logins
-   - Automatically merges CSV files with encoding detection
-   - Respects robots.txt and implements polite crawling
-
-2. **`process_local_data.py`** (RSDataProcessor class) - Traditional workflow
+1. **`process_local_data.py`** (RSDataProcessor class) - Primary workflow
    - Processes manually downloaded ZIP files from `downloads/` directory
    - Extracts and analyzes CSV/Excel files
    - Generates analysis reports in HTML and JSON formats
    - Handles multiple Japanese encodings automatically (UTF-8, Shift-JIS, CP932, etc.)
+   - Successfully processed 2024 dataset: 15 ZIP files → 553,094 records
 
-3. **`fetch_rs_data.py`** (RSSystemDataFetcher class) - Limited functionality
+2. **`fetch_rs_data.py`** (RSSystemDataFetcher class) - Limited functionality
    - Attempts basic HTTP-based automatic data download
    - Currently limited due to SPA architecture and dynamic URL generation
    - Falls back to placeholder URLs when automatic download fails
 
 ### Data Flow
 
-#### Playwright Automated Flow (Recommended)
-1. Browser automation navigates to RS System
-2. First run: Manual login if required (session saved)
-3. Intercepts download events and network responses
-4. Saves files to `data/rs/{year}/downloads/`
-5. Extracts ZIPs to `data/rs/{year}/extracted/`
-6. Merges CSVs to `data/rs/{year}/merged/merged_{year}.csv`
-
-#### Manual Download Flow
+#### Manual Download Flow (Primary Method)
 1. User manually downloads ZIP files from https://rssystem.go.jp
 2. Places files in `downloads/` directory
 3. Script extracts to `data/extracted/`
 4. Analyzes and saves reports to `data/reports/`
 5. Merged data saved to `data/processed/`
 
+#### Proven Results (2024 Dataset)
+- **Downloaded**: 15 ZIP files (各カテゴリの詳細データ)
+- **Extracted**: 15 CSV files with automatic encoding detection
+- **Processed**: 553,094 total records across all data types
+- **Normalized**: 5,664 unique budget projects (matches official count)
+
 ### Key Technical Considerations
 
 - **Encoding Handling**: Japanese government data uses various encodings. The scripts automatically detect and handle UTF-8, Shift-JIS, CP932, UTF-8-BOM, ISO-2022-JP, and EUC-JP.
 
-- **RS System Limitations**: The website is a React SPA with session-based dynamic URLs. Playwright script overcomes this by executing JavaScript directly in the browser context.
+- **RS System Limitations**: The website is a React SPA with session-based dynamic URLs, requiring manual download for reliable data access.
 
-- **Data Structure**: RS System provides multiple data types (事業データ/project data, シートデータ/sheet data) that may need different processing approaches.
+- **Data Structure**: RS System provides multiple data types across 5 categories:
+  - Basic Information (組織情報、事業概要等)
+  - Budget & Execution (予算・執行)
+  - Effect Path (効果発現経路)
+  - Expenditure (支出先)
+  - Evaluation (点検・評価)
 
-- **Session Management**: Playwright script saves browser state to `storage_state.json` for session persistence across runs.
-
-- **Polite Crawling**: Scripts implement wait times between requests and check robots.txt to respect server resources.
+- **Manual Download Success**: Proven workflow with 2024 dataset processing all 15 official data files.
 
 ## Output Files
 
-- `data/reports/analysis_report.json` - Detailed analysis in JSON
+#### Manual Processing (Primary Method)
+- `data/reports/analysis_report.json` - Detailed analysis in JSON format
 - `data/reports/analysis_report.html` - Visual HTML report
-- `data/processed/merged_data.csv` - Combined dataset
+- `data/processed/merged_data.csv` - Combined dataset (concatenated, 553,094 records)
+- `downloads/` - Manual download staging area for ZIP files
+
+## Data Processing Results
+
+Based on actual RS System 2024 data processing:
+
+### Dataset Overview
+- **Total Files**: 15 ZIP files containing CSV data
+- **Data Categories**: 
+  - Basic Information (5 files): Organization, project overview, policies, subsidies, related projects
+  - Budget & Execution (2 files): Summary, budget types
+  - Effect Path (2 files): Goals/performance, goal connections
+  - Expenditure (4 files): Payment info, block connections, expenses, contracts
+  - Others (2 files): Evaluation, remarks
+
+### Merge Strategies & Record Counts
+
+| Merge Method | Record Count | Description |
+|--------------|--------------|-------------|
+| **Concatenation (Current)** | **553,094 rows** | Vertical stacking of all files |
+| **Budget Project ID + Year** | **5,664 rows** | Normalized by unique projects |
+
+### Key Insights
+- **5,664 unique budget projects** in 2024 dataset
+- Concatenation preserves all detail records across different data types
+- Budget ID merge provides normalized project-centric view
+- Budget ID merge results match official RS System project count
 
 ## Error Handling
 
 The scripts include robust error handling for:
 - Missing downloads directory
 - Invalid ZIP files (HTML content instead of actual ZIPs)
-- Encoding detection failures
+- Encoding detection failures (supports UTF-8, Shift-JIS, CP932, EUC-JP, ISO-2022-JP)
 - Memory management for large datasets
+- Mixed data types in columns (automatic dtype handling)

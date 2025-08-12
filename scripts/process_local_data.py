@@ -200,8 +200,11 @@ class RSDataProcessor:
         
         print(f"\n Analysis report saved to: {output_path}")
         
-        # HTMLレポートも生成
-        self.generate_html_report(analysis_results)
+        # HTMLレポートも生成（エラーが発生しても継続）
+        try:
+            self.generate_html_report(analysis_results)
+        except Exception as e:
+            print(f"Warning: HTML report generation failed: {e}")
         
         return analysis_results
     
@@ -301,14 +304,26 @@ class RSDataProcessor:
         </tr>"""
         
         # HTMLを生成
-        html = html_content.format(
-            csv_count=analysis_results['summary']['total_csv_files'],
-            excel_count=analysis_results['summary']['total_excel_files'],
-            total_rows=analysis_results['summary']['total_rows_csv'],
-            memory=analysis_results['summary']['total_memory_mb'],
-            csv_rows=csv_rows,
-            excel_rows=excel_rows
-        )
+        try:
+            html = html_content.format(
+                csv_count=analysis_results['summary']['total_csv_files'],
+                excel_count=analysis_results['summary']['total_excel_files'],
+                total_rows=analysis_results['summary']['total_rows_csv'],
+                memory=analysis_results['summary']['total_memory_mb'],
+                csv_rows=csv_rows,
+                excel_rows=excel_rows
+            )
+        except KeyError as e:
+            logger.error(f"HTML template error: {e}")
+            # 簡易HTMLを生成
+            html = f"""<!DOCTYPE html>
+<html><head><title>RS Analysis Report</title></head>
+<body>
+<h1>RS System Data Analysis Report</h1>
+<p>CSV Files: {analysis_results['summary']['total_csv_files']}</p>
+<p>Total Rows: {analysis_results['summary']['total_rows_csv']:,}</p>
+<p>Memory Usage: {analysis_results['summary']['total_memory_mb']:.2f} MB</p>
+</body></html>"""
         
         # HTMLファイルを保存
         html_path = self.reports_dir / 'analysis_report.html'
@@ -391,6 +406,10 @@ class RSDataProcessor:
         if analysis_results['csv_files']:
             print("\n Step 3: Merging CSV files...")
             merged_df = self.merge_csv_files()
+            
+            if merged_df is not None:
+                print(f" Merged data shape: {merged_df.shape}")
+                print(f" Columns: {list(merged_df.columns)[:10]}...")  # 最初の10列のみ表示
         
         print("\n" + "=" * 50)
         print("Processing completed!")

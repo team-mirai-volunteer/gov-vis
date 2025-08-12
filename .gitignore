@@ -11,13 +11,6 @@ env.bak/
 venv.bak/
 .venv/
 
-# Data files
-data/
-*.csv
-*.zip
-*.xlsx
-*.xls
-
 # IDE
 .vscode/
 .idea/
@@ -45,3 +38,7 @@ logs/
 tmp/
 temp/
 *.tmp
+
+# large data directories
+/data/processed/
+/data/raw/
