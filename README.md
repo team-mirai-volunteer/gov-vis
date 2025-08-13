@@ -48,8 +48,8 @@ python scripts/process_local_data.py
 # データ構造分析
 python scripts/data_structure_analyzer.py
 
-# 正規化・Feather変換（推奨）
-python scripts/quick_feather_converter.py
+# 全カラムFeather変換（推奨）
+python scripts/full_feather_converter.py
 
 # AI関連事業の包括的検索
 python scripts/feather_ai_search.py
@@ -57,7 +57,7 @@ python scripts/feather_ai_search.py
 # AI検索の問題調査・改善（最新）
 python scripts/ai_match_investigation.py  # 検索問題の調査
 python scripts/improved_ai_search.py      # 改善されたAI検索
-python scripts/ai_basic_form_spreadsheet.py  # 基本形AIスプレッドシート生成
+python scripts/ai_ultimate_spreadsheet.py  # 究極の完全AIスプレッドシート生成（432列）
 
 # RSシステム公式データとの検証
 python scripts/rs_official_verification.py  # 公式152事業との照合検証
@@ -72,23 +72,23 @@ rs-visualization/
 ├── scripts/
 │   ├── process_local_data.py        # 基本データ処理（従来方式）
 │   ├── data_structure_analyzer.py  # データ構造詳細分析
-│   ├── quick_feather_converter.py  # 正規化・Feather変換
+│   ├── full_feather_converter.py   # 全カラムFeather変換（444カラム）
 │   ├── feather_ai_search.py        # AI関連事業検索
 │   ├── ai_match_investigation.py   # AI検索問題調査
 │   ├── improved_ai_search.py       # 改善されたAI検索
-│   ├── ai_basic_form_spreadsheet.py # 基本形AIスプレッドシート生成
+│   ├── ai_ultimate_spreadsheet.py  # 究極の完全AIスプレッドシート（432列）
 │   ├── rs_official_verification.py  # RS公式データ照合検証
 │   └── performance_comparison_report.py # パフォーマンス比較
 ├── downloads/                       # 手動ダウンロードZIPファイル配置用
 ├── data/
 │   ├── extracted/                   # 解凍された元データ（15ファイル）
-│   ├── normalized_feather/          # 正規化Featherテーブル（5テーブル）
+│   ├── full_feather/                # 全カラムFeatherテーブル（444カラム）
 │   ├── structure_analysis/          # データ構造分析結果
 │   ├── ai_analysis_feather/         # AI検索結果（従来手法）
 │   ├── ai_investigation/            # AI検索問題調査結果
 │   │   └── AI_record_list.txt       # RSシステム公式AI検索152事業リスト
 │   ├── improved_ai_search/          # 改善されたAI検索結果
-│   ├── ai_basic_form_spreadsheet/   # 基本形AIスプレッドシート
+│   ├── ai_ultimate_spreadsheet/     # 究極の完全AIスプレッドシート（432列）
 │   ├── rs_official_verification/    # RS公式データ照合検証結果
 │   ├── performance_comparison/      # パフォーマンス比較レポート
 ├── requirements.txt                 # 基本依存パッケージ
@@ -105,13 +105,14 @@ rs-visualization/
 - **データ品質評価**: 欠損値・重複・正規化可能性の包括的評価
 
 ### 2. 正規化・最適化
-- **リレーショナル正規化**: 5つのテーブルに効率的に分離
-  - `projects`: 事業マスター（5,664事業）
-  - `expenditure_info`: 支出情報（173,359レコード）
-  - `goals_performance`: 目標・実績（117,971レコード） 
-  - `expenditure_connections`: 支出先関係（20,074レコード）
-  - `contracts`: 契約情報（4,149レコード）
-- **Feather変換**: 93%のサイズ削減（229MB → 15MB）と高速アクセス
+- **全カラム保持**: 15テーブルから444カラムを完全保持
+  - `organizations`: 組織情報（8,537レコード）
+  - `projects`: 事業概要等（5,948レコード）
+  - `policies_laws`: 政策・施策・法令等（14,991レコード）
+  - `budget_summary`: 予算・執行サマリ（37,981レコード）
+  - `goals_performance`: 目標・実績（118,019レコード）
+  - その他10テーブル（合計553,094レコード）
+- **Feather変換**: 73.8%のサイズ削減と高速アクセス（全カラム保持）
 
 ### 3. AI関連事業の包括的検索
 - **包括的検索パターン**: 86種類のAI関連用語・技術での検索
@@ -177,9 +178,10 @@ rs-visualization/
 - `data/structure_analysis/detailed_structure_analysis.json`: 15ファイルの詳細構造分析
 - `data/structure_analysis/structure_analysis_report.html`: データ構造分析の視覚化レポート
 
-### 正規化データ
-- `data/normalized_feather/*.feather`: 正規化された5つのFeatherテーブル
-- `data/normalized_feather/ai_search_metadata.json`: AI検索用メタデータ
+### 全カラムFeatherデータ
+- `data/full_feather/*.feather`: 全444カラムを保持した15のFeatherテーブル
+- `data/full_feather/full_feather_metadata.json`: 完全データメタデータ
+- `data/full_feather/column_mapping.json`: カラムマッピング情報
 
 ### AI関連事業検索結果
 - `data/ai_analysis_feather/ai_related_projects_feather.json`: AI関連事業892件の詳細データ（従来手法）
@@ -195,10 +197,12 @@ rs-visualization/
 - `data/ai_investigation/ai_investigation_report.html`: 検索問題の詳細調査レポート
 - `data/ai_investigation/ai_match_investigation_report.json`: 調査結果の完全データ
 
-### 基本形AIスプレッドシート
-- `data/ai_basic_form_spreadsheet/ai_basic_form_complete_data.xlsx`: 基本形AI事業267行×20列の完全スプレッドシート
-- `data/ai_basic_form_spreadsheet/ai_basic_form_complete_data.csv`: CSV形式
-- `data/ai_basic_form_spreadsheet/ai_basic_form_report.html`: スプレッドシート詳細レポート
+### 究極の完全AIスプレッドシート
+- `data/ai_ultimate_spreadsheet/ai_ultimate_all_444_columns.xlsx`: 究極のAI事業213行×432列の完全スプレッドシート
+- `data/ai_ultimate_spreadsheet/ai_ultimate_all_444_columns.csv`: CSV形式（全カラム）
+- `data/ai_ultimate_spreadsheet/ai_ultimate_all_444_columns.parquet`: 高速アクセス用圧縮形式
+- `data/ai_ultimate_spreadsheet/ultimate_report.html`: 究極版詳細レポート
+- `data/ai_ultimate_spreadsheet/ultimate_columns_list.txt`: 全432カラム一覧
 
 ### RSシステム公式データ照合検証結果
 - `data/rs_official_verification/rs_verification_report.html`: 照合検証レポート（100%マッチ達成）
@@ -242,13 +246,14 @@ rs-visualization/
 - **検索範囲拡大**: 6フィールド → 全テキストフィールド（5テーブル横断）
 - **パターン強化**: 19用語 → 86種類の包括的AI関連パターン
 - **府省庁分布**: 経済産業省133件、国土交通省106件、デジタル庁101件が上位
+- **究極のデータ完全性**: 20列 → 432列 (2,060%向上) の飛躍的データ拡張
 
 ### AI検索精度の根本的改善（重要成果）
 - **問題調査**: AI限定検索の深刻な問題（単語境界制限等）を特定・修正
 - **検索改善**: AI限定事業 57件 → **443件** (677%向上)
 - **公式データとの完全整合**: RSシステム公式AI検索152事業との**100%マッチ達成**
 - **アンチパターン特定**: 避けるべき検索パターンを文書化
-- **完全データ**: 基本形AI事業267行×20列の完全スプレッドシート作成
+- **究極の完全データ**: 基本形AI事業213行×432列の究極スプレッドシート作成
 - **検証済み信頼性**: 政府公式データとの完全一致により分析の信頼性を保証
 - **実用性向上**: 政策立案・分析に直接活用可能な正確なデータを提供
 

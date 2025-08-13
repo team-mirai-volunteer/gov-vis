@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>全カラム保持 Feather変換レポート</title>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; margin: 20px; background: #f8f9fa; }
+        .container { max-width: 1200px; margin: 0 auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        h1 { color: #2c3e50; text-align: center; margin-bottom: 30px; }
+        .summary { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 25px; border-radius: 8px; margin: 20px 0; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 20px 0; }
+        .metric { text-align: center; background: rgba(255,255,255,0.1); padding: 15px; border-radius: 5px; }
+        .metric-value { font-size: 2em; font-weight: bold; }
+        .metric-label { font-size: 0.9em; opacity: 0.9; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th { background: #34495e; color: white; padding: 12px; text-align: left; }
+        td { padding: 10px; border-bottom: 1px solid #ecf0f1; }
+        tr:hover { background: #f8f9fa; }
+        .success { color: #27ae60; font-weight: bold; }
+        .category { background: #e3f2fd; padding: 15px; margin: 10px 0; border-radius: 5px; }
+        .footer { text-align: center; margin-top: 30px; color: #7f8c8d; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📊 全カラム保持 Feather変換レポート</h1>
+        
+        <div class="summary">
+            <h2 style="color: white; margin-top: 0;">変換サマリー</h2>
+            <div class="grid">
+                <div class="metric">
+                    <div class="metric-label">変換ファイル数</div>
+                    <div class="metric-value">15</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">総レコード数</div>
+                    <div class="metric-value">553,094</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">総カラム数</div>
+                    <div class="metric-value success">444</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">圧縮率</div>
+                    <div class="metric-value">73.8%</div>
+                </div>
+            </div>
+        </div>
+        
+        <h2>📁 カテゴリ別統計</h2>
+        <div class="grid">
+            <div class="category">
+                <h3>基本情報</h3>
+                <p>テーブル数: 5</p>
+                <p>レコード数: 41,696</p>
+                <p>カラム数: 117</p>
+            </div>
+            <div class="category">
+                <h3>予算・執行</h3>
+                <p>テーブル数: 2</p>
+                <p>レコード数: 93,590</p>
+                <p>カラム数: 70</p>
+            </div>
+            <div class="category">
+                <h3>効果発現経路</h3>
+                <p>テーブル数: 2</p>
+                <p>レコード数: 146,381</p>
+                <p>カラム数: 105</p>
+            </div>
+            <div class="category">
+                <h3>点検・評価</h3>
+                <p>テーブル数: 1</p>
+                <p>レコード数: 5,692</p>
+                <p>カラム数: 37</p>
+            </div>
+            <div class="category">
+                <h3>支出先</h3>
+                <p>テーブル数: 4</p>
+                <p>レコード数: 260,071</p>
+                <p>カラム数: 101</p>
+            </div>
+            <div class="category">
+                <h3>その他</h3>
+                <p>テーブル数: 1</p>
+                <p>レコード数: 5,664</p>
+                <p>カラム数: 14</p>
+            </div>
+        </div>
+        
+        <h2>📋 テーブル詳細</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>テーブル名</th>
+                    <th>日本語名</th>
+                    <th>カテゴリ</th>
+                    <th>レコード数</th>
+                    <th>カラム数</th>
+                    <th>サイズ削減</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>organizations</strong></td>
+                    <td>組織情報</td>
+                    <td>基本情報</td>
+                    <td style="text-align: right;">8,537</td>
+                    <td style="text-align: right;" class="success">22</td>
+                    <td style="text-align: right;">65.7%</td>
+                </tr>
+                <tr>
+                    <td><strong>projects</strong></td>
+                    <td>事業概要等</td>
+                    <td>基本情報</td>
+                    <td style="text-align: right;">5,948</td>
+                    <td style="text-align: right;" class="success">32</td>
+                    <td style="text-align: right;">55.4%</td>
+                </tr>
+                <tr>
+                    <td><strong>policies_laws</strong></td>
+                    <td>政策・施策・法令等</td>
+                    <td>基本情報</td>
+                    <td style="text-align: right;">14,991</td>
+                    <td style="text-align: right;" class="success">28</td>
+                    <td style="text-align: right;">74.4%</td>
+                </tr>
+                <tr>
+                    <td><strong>subsidies</strong></td>
+                    <td>補助率等</td>
+                    <td>基本情報</td>
+                    <td style="text-align: right;">5,909</td>
+                    <td style="text-align: right;" class="success">18</td>
+                    <td style="text-align: right;">59.3%</td>
+                </tr>
+                <tr>
+                    <td><strong>related_projects</strong></td>
+                    <td>関連事業</td>
+                    <td>基本情報</td>
+                    <td style="text-align: right;">6,311</td>
+                    <td style="text-align: right;" class="success">17</td>
+                    <td style="text-align: right;">64.3%</td>
+                </tr>
+                <tr>
+                    <td><strong>budget_summary</strong></td>
+                    <td>予算・執行サマリ</td>
+                    <td>予算・執行</td>
+                    <td style="text-align: right;">37,981</td>
+                    <td style="text-align: right;" class="success">44</td>
+                    <td style="text-align: right;">72.0%</td>
+                </tr>
+                <tr>
+                    <td><strong>budget_items</strong></td>
+                    <td>予算種別・歳出予算項目</td>
+                    <td>予算・執行</td>
+                    <td style="text-align: right;">55,609</td>
+                    <td style="text-align: right;" class="success">26</td>
+                    <td style="text-align: right;">75.9%</td>
+                </tr>
+                <tr>
+                    <td><strong>goals_performance</strong></td>
+                    <td>目標・実績</td>
+                    <td>効果発現経路</td>
+                    <td style="text-align: right;">118,019</td>
+                    <td style="text-align: right;" class="success">82</td>
+                    <td style="text-align: right;">81.7%</td>
+                </tr>
+                <tr>
+                    <td><strong>goal_connections</strong></td>
+                    <td>目標のつながり</td>
+                    <td>効果発現経路</td>
+                    <td style="text-align: right;">28,362</td>
+                    <td style="text-align: right;" class="success">23</td>
+                    <td style="text-align: right;">65.7%</td>
+                </tr>
+                <tr>
+                    <td><strong>evaluations</strong></td>
+                    <td>点検・評価</td>
+                    <td>点検・評価</td>
+                    <td style="text-align: right;">5,692</td>
+                    <td style="text-align: right;" class="success">37</td>
+                    <td style="text-align: right;">60.0%</td>
+                </tr>
+                <tr>
+                    <td><strong>expenditure_info</strong></td>
+                    <td>支出情報</td>
+                    <td>支出先</td>
+                    <td style="text-align: right;">194,133</td>
+                    <td style="text-align: right;" class="success">32</td>
+                    <td style="text-align: right;">75.5%</td>
+                </tr>
+                <tr>
+                    <td><strong>expenditure_connections</strong></td>
+                    <td>支出ブロックのつながり</td>
+                    <td>支出先</td>
+                    <td style="text-align: right;">22,662</td>
+                    <td style="text-align: right;" class="success">22</td>
+                    <td style="text-align: right;">70.9%</td>
+                </tr>
+                <tr>
+                    <td><strong>expenditure_details</strong></td>
+                    <td>費目・使途</td>
+                    <td>支出先</td>
+                    <td style="text-align: right;">33,986</td>
+                    <td style="text-align: right;" class="success">20</td>
+                    <td style="text-align: right;">71.9%</td>
+                </tr>
+                <tr>
+                    <td><strong>contracts</strong></td>
+                    <td>国庫債務負担行為等による契約</td>
+                    <td>支出先</td>
+                    <td style="text-align: right;">9,290</td>
+                    <td style="text-align: right;" class="success">27</td>
+                    <td style="text-align: right;">66.8%</td>
+                </tr>
+                <tr>
+                    <td><strong>remarks</strong></td>
+                    <td>その他備考</td>
+                    <td>その他</td>
+                    <td style="text-align: right;">5,664</td>
+                    <td style="text-align: right;" class="success">14</td>
+                    <td style="text-align: right;">60.9%</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h2>🎯 AI検索対象フィールド</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>テーブル</th>
+                    <th>検索対象フィールド</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>projects</strong></td>
+                    <td>事業名, 事業の目的, 事業の概要, 現状・課題</td>
+                </tr>
+                <tr>
+                    <td><strong>expenditure_info</strong></td>
+                    <td>支出先名, 法人番号</td>
+                </tr>
+                <tr>
+                    <td><strong>expenditure_details</strong></td>
+                    <td>費目, 使途, 契約概要</td>
+                </tr>
+                <tr>
+                    <td><strong>goals_performance</strong></td>
+                    <td>アクティビティ／活動目標／成果目標, 活動指標／成果指標</td>
+                </tr>
+                <tr>
+                    <td><strong>expenditure_connections</strong></td>
+                    <td>支出先の支出先ブロック名, 資金の流れの補足情報</td>
+                </tr>
+                <tr>
+                    <td><strong>contracts</strong></td>
+                    <td>契約先名（国庫債務負担行為等による契約）, 契約概要（契約名）（国庫債務負担行為等による契約）</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="footer">
+            <p>Generated by Full Feather Converter</p>
+            <p>全 444 カラムを完全保持</p>
+        </div>
+    </div>
+</body>
+</html>

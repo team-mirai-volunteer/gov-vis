@@ -1,0 +1,215 @@
+{
+  "basic_statistics": {
+    "total_projects": 213,
+    "total_columns": 432,
+    "data_columns": 429,
+    "ai_metadata_columns": 3,
+    "total_ai_matches": "1823",
+    "average_ai_matches": 8.56,
+    "max_ai_matches": "101"
+  },
+  "table_breakdown": {
+    "organizations": {
+      "japanese_name": "組織情報",
+      "category": "基本情報",
+      "total_columns": 21,
+      "original_columns": 22,
+      "average_coverage": 56.1,
+      "columns_with_data": 21
+    },
+    "projects": {
+      "japanese_name": "事業概要等",
+      "category": "基本情報",
+      "total_columns": 31,
+      "original_columns": 32,
+      "average_coverage": 61.5,
+      "columns_with_data": 29
+    },
+    "policies_laws": {
+      "japanese_name": "政策・施策・法令等",
+      "category": "基本情報",
+      "total_columns": 27,
+      "original_columns": 28,
+      "average_coverage": 72.1,
+      "columns_with_data": 27
+    },
+    "subsidies": {
+      "japanese_name": "補助率等",
+      "category": "基本情報",
+      "total_columns": 17,
+      "original_columns": 18,
+      "average_coverage": 55.8,
+      "columns_with_data": 17
+    },
+    "related_projects": {
+      "japanese_name": "関連事業",
+      "category": "基本情報",
+      "total_columns": 16,
+      "original_columns": 17,
+      "average_coverage": 56.0,
+      "columns_with_data": 16
+    },
+    "budget_summary": {
+      "japanese_name": "予算・執行サマリ",
+      "category": "予算・執行",
+      "total_columns": 43,
+      "original_columns": 44,
+      "average_coverage": 84.0,
+      "columns_with_data": 43
+    },
+    "budget_items": {
+      "japanese_name": "予算種別・歳出予算項目",
+      "category": "予算・執行",
+      "total_columns": 25,
+      "original_columns": 26,
+      "average_coverage": 73.5,
+      "columns_with_data": 25
+    },
+    "goals_performance": {
+      "japanese_name": "目標・実績",
+      "category": "効果発現経路",
+      "total_columns": 81,
+      "original_columns": 82,
+      "average_coverage": 29.4,
+      "columns_with_data": 46
+    },
+    "goal_connections": {
+      "japanese_name": "目標のつながり",
+      "category": "効果発現経路",
+      "total_columns": 22,
+      "original_columns": 23,
+      "average_coverage": 79.3,
+      "columns_with_data": 22
+    },
+    "evaluations": {
+      "japanese_name": "点検・評価",
+      "category": "点検・評価",
+      "total_columns": 36,
+      "original_columns": 37,
+      "average_coverage": 44.6,
+      "columns_with_data": 35
+    },
+    "expenditure_info": {
+      "japanese_name": "支出情報",
+      "category": "支出先",
+      "total_columns": 31,
+      "original_columns": 32,
+      "average_coverage": 73.6,
+      "columns_with_data": 31
+    },
+    "expenditure_connections": {
+      "japanese_name": "支出ブロックのつながり",
+      "category": "支出先",
+      "total_columns": 21,
+      "original_columns": 22,
+      "average_coverage": 64.3,
+      "columns_with_data": 21
+    },
+    "expenditure_details": {
+      "japanese_name": "費目・使途",
+      "category": "支出先",
+      "total_columns": 19,
+      "original_columns": 20,
+      "average_coverage": 71.7,
+      "columns_with_data": 19
+    },
+    "contracts": {
+      "japanese_name": "国庫債務負担行為等による契約",
+      "category": "支出先",
+      "total_columns": 26,
+      "original_columns": 27,
+      "average_coverage": 35.5,
+      "columns_with_data": 25
+    },
+    "remarks": {
+      "japanese_name": "その他備考",
+      "category": "その他",
+      "total_columns": 13,
+      "original_columns": 14,
+      "average_coverage": 65.1,
+      "columns_with_data": 13
+    }
+  },
+  "data_coverage": {
+    "organizations_その他担当組織_作成責任者_no": 100.0,
+    "organizations_シート種別": 100.0,
+    "organizations_事業名": 100.0,
+    "organizations_事業年度": 100.0,
+    "organizations_作成責任者": 100.0,
+    "organizations_府省庁": 100.0,
+    "organizations_建制順": 100.0,
+    "organizations_所管府省庁": 100.0,
+    "projects_シート種別": 100.0,
+    "projects_事業の目的": 100.0,
+    "projects_事業区分": 100.0,
+    "projects_事業名": 100.0,
+    "projects_事業年度": 100.0,
+    "projects_府省庁": 100.0,
+    "projects_府省庁の建制順": 100.0,
+    "projects_政策所管府省庁": 100.0,
+    "projects_現状・課題": 100.0,
+    "projects_終了予定なし": 100.0,
+    "projects_開始年度不明": 100.0,
+    "policies_laws_シート種別": 100.0,
+    "policies_laws_事業名": 100.0,
+    "policies_laws_事業年度": 100.0,
+    "policies_laws_府省庁": 100.0,
+    "policies_laws_府省庁の建制順": 100.0,
+    "policies_laws_政策": 100.0,
+    "policies_laws_政策所管府省庁": 100.0,
+    "policies_laws_政策所管府省庁_P": 100.0,
+    "policies_laws_施策": 100.0,
+    "policies_laws_番号（政策・施策）": 100.0,
+    "subsidies_シート種別": 100.0,
+    "subsidies_事業名": 100.0,
+    "subsidies_事業年度": 100.0,
+    "subsidies_府省庁": 100.0,
+    "subsidies_府省庁の建制順": 100.0,
+    "subsidies_政策所管府省庁": 100.0,
+    "related_projects_シート種別": 100.0,
+    "related_projects_事業名": 100.0,
+    "related_projects_事業年度": 100.0,
+    "related_projects_府省庁": 100.0,
+    "related_projects_府省庁の建制順": 100.0,
+    "related_projects_政策所管府省庁": 100.0,
+    "budget_summary_シート種別": 100.0,
+    "budget_summary_予備費等1": 100.0,
+    "budget_summary_予備費等2": 100.0,
+    "budget_summary_予備費等3": 100.0,
+    "budget_summary_予備費等4": 100.0,
+    "budget_summary_予備費等（合計）": 100.0,
+    "budget_summary_予算年度": 100.0,
+    "budget_summary_事業名": 100.0,
+    "budget_summary_事業年度": 100.0
+  },
+  "ministry_distribution": {
+    "経済産業省": 44,
+    "文部科学省": 30,
+    "総務省": 28,
+    "厚生労働省": 17,
+    "国土交通省": 14,
+    "デジタル庁": 13,
+    "内閣府": 11,
+    "防衛省": 11,
+    "外務省": 10,
+    "農林水産省": 9,
+    "環境省": 4,
+    "消防庁": 3,
+    "警察庁": 3,
+    "消費者庁": 2,
+    "特許庁": 2,
+    "こども家庭庁": 2,
+    "金融庁": 2,
+    "復興庁": 1,
+    "個人情報保護委員会": 1,
+    "内閣官房": 1
+  },
+  "completeness_analysis": {
+    "perfect_records": 213,
+    "mostly_complete": 213,
+    "basic_complete": 213,
+    "total_non_null_cells": "92016",
+    "total_possible_cells": 92016,
+    "overall_completeness": 100.0
+  }
+}
