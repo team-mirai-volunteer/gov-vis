@@ -34,16 +34,52 @@ python scripts/full_feather_converter.py
 # Search for AI-related projects (legacy method)
 python scripts/feather_ai_search.py
 
-# Investigate AI search problems and improvements (latest)
+# AI search systems (choose based on analysis purpose)
 python scripts/ai_match_investigation.py     # Problem diagnosis
-python scripts/improved_ai_search.py         # Improved AI search (443 AI projects found)
-python scripts/ai_ultimate_spreadsheet.py   # Generate ultimate spreadsheet (213×432)
+python scripts/improved_ai_search.py         # Broad AI search (443 projects: comprehensive AI-related)
+python scripts/ai_ultimate_spreadsheet.py   # Narrow AI search (213 projects: basic AI forms only)
 
 # Verify against RS System official data
 python scripts/rs_official_verification.py   # Verify 100% match with official 152 projects
 ```
 
 ## Architecture
+
+### AI Search Systems
+
+The project provides two complementary AI search systems:
+
+#### 🎯 **Narrow AI Search** (213 projects) - Basic AI Forms Only
+**Purpose**: Analysis focused specifically on basic AI technology
+**Search Patterns**:
+```regex
+r'\bAI\b',     # Half-width AI (word boundary)
+r'\bＡＩ\b',    # Full-width AI (word boundary) 
+r'(?<![a-zA-Z])AI(?![a-zA-Z])',  # Precise half-width AI
+r'(?<![ａ-ｚＡ-Ｚ])ＡＩ(?![ａ-ｚＡ-Ｚ])'  # Precise full-width AI
+```
+**Output**: 432-column complete spreadsheet
+**Use Case**: Direct AI technology impact analysis
+
+#### 🌐 **Broad AI Search** (443 projects) - Comprehensive AI-Related
+**Purpose**: Comprehensive analysis of all AI-related technology fields
+**Search Patterns**:
+```regex
+# Basic forms
+r'AI',           # Basic form (no boundary restriction)
+r'ＡＩ',          # Full-width
+r'A\.I\.',       # Abbreviation (half-width)
+r'Ａ\.Ｉ\.'       # Abbreviation (full-width)
+
+# Compound/derivative forms
+r'生成AI', r'生成ＡＩ',
+r'AI[ア-ン\w]*',  # AI+something (AI搭載、AI活用, etc.)
+r'ＡＩ[ア-ン\w]*',  # Full-width version
+r'[ア-ン\w]*AI',  # Something+AI
+r'[ア-ン\w]*ＡＪ'   # Full-width version
+```
+**Output**: Detailed JSON format data
+**Use Case**: Overall AI-related field landscape analysis
 
 ### Data Processing Pipeline
 
@@ -55,12 +91,15 @@ The project uses a streamlined 3-stage data processing pipeline for ultimate dat
    - Achieves 73.8% size reduction while preserving complete data
    - Handles multiple Japanese encodings automatically (UTF-8, Shift-JIS, CP932, etc.)
 
-2. **`ai_ultimate_spreadsheet.py`** - Ultimate AI spreadsheet generation
-   - Generates the ultimate complete AI project spreadsheet (213 projects × 432 columns)
-   - Includes ALL available data columns from ALL 15 tables
-   - Removes ID column duplicates and adds AI analysis metadata
-   - Supports Excel, CSV, and Parquet formats for maximum compatibility
-   - Provides comprehensive data coverage analysis and HTML reports
+2. **AI Search Systems** - Dual search approach for different analysis needs
+   - **`ai_ultimate_spreadsheet.py`** - Narrow AI analysis (213 projects × 432 columns)
+     - Basic AI forms only: "AI", "ＡＩ" with strict word boundaries
+     - Complete 432-column spreadsheet for detailed analysis
+     - Excel, CSV, and Parquet formats
+   - **`improved_ai_search.py`** - Broad AI analysis (443 projects)
+     - Comprehensive AI-related terms including compounds
+     - JSON format data for flexible analysis
+     - Includes "生成AI", "AIシステム", "AI活用", etc.
 
 3. **`rs_official_verification.py`** - Official data verification
    - Verifies against RS System official AI search results (152 projects)
@@ -80,7 +119,9 @@ The project uses a streamlined 3-stage data processing pipeline for ultimate dat
 2. Places files in `downloads/` directory
 3. Basic processing extracts to `data/extracted/`
 4. Full-column Feather conversion saves to `data/full_feather/` (444 columns)
-5. Ultimate AI spreadsheet generation saves to `data/ai_ultimate_spreadsheet/` (432 columns)
+5. **Choose AI search approach**:
+   - **For narrow AI analysis**: Run `ai_ultimate_spreadsheet.py` → 213 projects × 432 columns
+   - **For broad AI analysis**: Run `improved_ai_search.py` → 443 projects (JSON)
 6. Official verification results saved to `data/rs_official_verification/`
 
 ### Legacy Data Flow (still available)
@@ -123,15 +164,20 @@ The project uses a streamlined 3-stage data processing pipeline for ultimate dat
 - `downloads/` - Manual download staging area for ZIP files
 
 #### AI Search Results
-- `data/ai_ultimate_spreadsheet/` - Ultimate AI spreadsheet (213 projects × 432 columns)
+### Narrow AI Search Results (Basic AI Forms Only)
+- `data/ai_ultimate_spreadsheet/` - Narrow AI spreadsheet (213 projects × 432 columns)
 - `data/ai_ultimate_spreadsheet/ai_ultimate_all_444_columns.xlsx` - Excel format
 - `data/ai_ultimate_spreadsheet/ai_ultimate_all_444_columns.csv` - CSV format  
 - `data/ai_ultimate_spreadsheet/ai_ultimate_all_444_columns.parquet` - Parquet format
-- `data/rs_official_verification/` - Official data verification results (100% match achieved)
 
-### Legacy AI Search Results (still available)
+### Broad AI Search Results (Comprehensive AI-Related)
+- `data/improved_ai_search/` - Broad AI search results (443 AI-related projects)
+- `data/improved_ai_search/ai_exact_improved.json` - JSON format data
+- `data/improved_ai_search/improved_search_report.html` - Analysis report
+
+### Verification and Analysis
+- `data/rs_official_verification/` - Official data verification results (100% match achieved)
 - `data/ai_investigation/` - AI search problem diagnosis and analysis
-- `data/improved_ai_search/` - Improved AI search results (443 AI projects)
 
 #### Performance and Comparison Reports
 - `data/performance_comparison/` - Method comparison reports
@@ -215,8 +261,10 @@ Based on comprehensive investigation of AI search problems, the following patter
 - **Improvement**: 677% increase in accuracy
 - **Official Verification**: Complete coverage of RS System 152 AI projects
 - **Reliability Score**: 100% match with government official data
+- **Dual Search System**: Narrow (213 projects) and Broad (443 projects) AI analysis
 - **Ultimate Data Achievement**: 432-column complete spreadsheet (2,060% increase from 20 columns)
 - **Data Completeness**: All 444 available columns preserved in Feather format
+- **Search Pattern Precision**: Documented regex patterns for reproducible analysis
 
 ## Official Data Verification Success
 
@@ -230,7 +278,8 @@ The project has been verified against the official RS System AI search results:
   - Fuzzy matches: 3 (2.0%)
   - Missing: 0 (0.0%)
 - **Total Coverage**: **100%**
-- **Ultimate Spreadsheet**: 213 projects with complete 432-column data coverage
+- **Narrow AI Spreadsheet**: 213 projects with complete 432-column data coverage (basic AI forms)
+- **Broad AI Dataset**: 443 projects covering comprehensive AI-related technologies
 
 This verification confirms that our improved search methodology captures all officially recognized AI-related government projects, ensuring complete data reliability for policy analysis and research.
 

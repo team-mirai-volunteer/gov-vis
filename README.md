@@ -56,8 +56,8 @@ python scripts/feather_ai_search.py
 
 # AI検索の問題調査・改善（最新）
 python scripts/ai_match_investigation.py  # 検索問題の調査
-python scripts/improved_ai_search.py      # 改善されたAI検索
-python scripts/ai_ultimate_spreadsheet.py  # 究極の完全AIスプレッドシート生成（432列）
+python scripts/improved_ai_search.py      # 広義AI検索（443件・包括的）
+python scripts/ai_ultimate_spreadsheet.py  # 狭義AI完全スプレッドシート（213件×432列・厳密）
 
 # RSシステム公式データとの検証
 python scripts/rs_official_verification.py  # 公式152事業との照合検証
@@ -141,11 +141,25 @@ rs-visualization/
 
 ### 🔍 AI関連事業検索結果
 
-| 検索手法 | AI関連事業（広範囲） | AI限定事業 | 実行時間 | 改善率 | RS公式との整合性 |
-|---------|-------------------|-----------|---------|--------|---------------|
+#### AI事業検索システムの定義
+
+**🎯 狭義のAI事業** (213件) - 基本形AI技術に特化
+- **検索パターン**: `\bAI\b`, `\bＡＩ\b` (単語境界付き厳密検索)
+- **対象**: 「AI」「ＡＩ」のみを含む事業
+- **用途**: AI技術の直接的影響分析
+- **出力**: 432列完全スプレッドシート
+
+**🌐 広義のAI事業** (443件) - AI関連技術全般を包括
+- **検索パターン**: `AI|ＡＩ|生成AI|AIシステム|AI活用` 等（複合語含む）
+- **対象**: 基本形AI + 複合語・派生語を含む事業
+- **用途**: AI関連分野の全体像把握
+- **出力**: 詳細JSON形式データ
+
+| 検索手法 | 広義AI事業 | 狭義AI事業 | 実行時間 | 改善率 | RS公式との整合性 |
+|---------|-----------|-----------|---------|--------|---------------|
 | **従来手法** | 52件 (0.92%) | 4件 (0.07%) | 76.3秒 | - | 2.6% |
 | **正規化手法** | 892件 (15.7%) | 57件 (1.0%) | 44.6秒 | +1,615% | 37.5% |
-| **改善済み手法** | **892件 (15.7%)** | **443件 (7.8%)** | **54.5秒** | **+10,650%** | **100%** |
+| **改善済み手法** | **443件 (7.8%)** | **213件 (3.8%)** | **54.5秒** | **+10,650%** | **100%** |
 
 ### ✅ RSシステム公式データとの検証結果
 
@@ -170,7 +184,9 @@ rs-visualization/
 - **複合語**: `生成AI|AIシステム|AI活用` 等
 - **柔軟なマッチング**: 単語境界制限を緩和
 
-**結果**: AI限定事業が **57件 → 443件** (677%改善) に向上
+**結果**: 
+- 広義AI事業が **57件 → 443件** (677%改善) - AI関連技術全般
+- 狭義AI事業が **57件 → 213件** (274%改善) - 基本形AI技術のみ
 
 ## 🗂️ 出力ファイル・レポート
 
@@ -188,8 +204,8 @@ rs-visualization/
 - `data/ai_analysis_feather/ai_only_projects_feather.json`: AI限定事業57件の詳細データ（従来手法）
 - `data/ai_analysis_feather/feather_search_report.html`: AI検索結果の可視化レポート（従来手法）
 
-### 改善されたAI検索結果
-- `data/improved_ai_search/ai_exact_improved.json`: AI限定事業443件の詳細データ（改善手法）
+### 広義AI検索結果（AI関連技術全般）
+- `data/improved_ai_search/ai_exact_improved.json`: 広義AI事業443件の詳細データ（改善手法）
 - `data/improved_ai_search/ai_all_improved.json`: AI包括事業443件の詳細データ（改善手法）
 - `data/improved_ai_search/improved_search_report.html`: 改善されたAI検索結果レポート
 
@@ -197,11 +213,11 @@ rs-visualization/
 - `data/ai_investigation/ai_investigation_report.html`: 検索問題の詳細調査レポート
 - `data/ai_investigation/ai_match_investigation_report.json`: 調査結果の完全データ
 
-### 究極の完全AIスプレッドシート
-- `data/ai_ultimate_spreadsheet/ai_ultimate_all_444_columns.xlsx`: 究極のAI事業213行×432列の完全スプレッドシート
+### 狭義AI完全スプレッドシート（基本形AI特化）
+- `data/ai_ultimate_spreadsheet/ai_ultimate_all_444_columns.xlsx`: 狭義AI事業213行×432列の完全スプレッドシート
 - `data/ai_ultimate_spreadsheet/ai_ultimate_all_444_columns.csv`: CSV形式（全カラム）
 - `data/ai_ultimate_spreadsheet/ai_ultimate_all_444_columns.parquet`: 高速アクセス用圧縮形式
-- `data/ai_ultimate_spreadsheet/ultimate_report.html`: 究極版詳細レポート
+- `data/ai_ultimate_spreadsheet/ultimate_report.html`: 狭義AI詳細レポート
 - `data/ai_ultimate_spreadsheet/ultimate_columns_list.txt`: 全432カラム一覧
 
 ### RSシステム公式データ照合検証結果
@@ -245,15 +261,18 @@ rs-visualization/
 - **従来見落とし**: 840件のAI関連事業を新たに発見
 - **検索範囲拡大**: 6フィールド → 全テキストフィールド（5テーブル横断）
 - **パターン強化**: 19用語 → 86種類の包括的AI関連パターン
-- **府省庁分布**: 経済産業省133件、国土交通省106件、デジタル庁101件が上位
+- **府省庁分布**: 
+  - 広義AI事業 (443件): 経済産業省76件、文部科学省64件、防衛省37件が上位
+  - 狭義AI事業 (213件): 経済産業省44件、文部科学省30件、総務省28件が上位
 - **究極のデータ完全性**: 20列 → 432列 (2,060%向上) の飛躍的データ拡張
 
 ### AI検索精度の根本的改善（重要成果）
 - **問題調査**: AI限定検索の深刻な問題（単語境界制限等）を特定・修正
-- **検索改善**: AI限定事業 57件 → **443件** (677%向上)
+- **広義AI検索改善**: AI関連事業 57件 → **443件** (677%向上) - 複合語・派生語を包括
+- **狭義AI検索改善**: 基本形AI事業 57件 → **213件** (274%向上) - 厳密なAI技術特化
 - **公式データとの完全整合**: RSシステム公式AI検索152事業との**100%マッチ達成**
 - **アンチパターン特定**: 避けるべき検索パターンを文書化
-- **究極の完全データ**: 基本形AI事業213行×432列の究極スプレッドシート作成
+- **究極の完全データ**: 狭義AI事業213行×432列の究極スプレッドシート作成
 - **検証済み信頼性**: 政府公式データとの完全一致により分析の信頼性を保証
 - **実用性向上**: 政策立案・分析に直接活用可能な正確なデータを提供
 
