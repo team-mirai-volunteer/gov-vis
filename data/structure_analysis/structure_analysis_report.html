@@ -1,0 +1,195 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>RSシステム データ構造分析レポート</title>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; margin: 20px; line-height: 1.6; }
+        h1 { color: #2c5aa0; text-align: center; }
+        h2 { color: #333; border-bottom: 2px solid #ddd; padding-bottom: 5px; }
+        .summary { background-color: #e8f4f8; padding: 20px; border-radius: 8px; margin: 20px 0; }
+        .risk-low { color: #28a745; }
+        .risk-medium { color: #ffc107; }
+        .risk-high { color: #dc3545; }
+        table { border-collapse: collapse; width: 100%; margin: 20px 0; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .number { font-weight: bold; color: #2c5aa0; }
+    </style>
+</head>
+<body>
+    <h1>RSシステム データ構造分析レポート</h1>
+    
+    <div class="summary">
+        <h2>分析サマリー</h2>
+
+        <p><strong>総ファイル数:</strong> <span class="number">18</span></p>
+        <p><strong>総レコード数:</strong> <span class="number">553,094</span></p>
+
+        <p><strong>ユニーク事業ID数:</strong> <span class="number">5664</span></p>
+
+    </div>
+    
+    <h2>ファイル別詳細</h2>
+    <table>
+        <tr>
+            <th>ファイル名</th>
+            <th>カテゴリ</th>
+            <th>レコード数</th>
+            <th>カラム数</th>
+            <th>事業ID数</th>
+            <th>レコード/事業</th>
+        </tr>
+
+        <tr>
+            <td>1-1_RS_2024_基本情報_組織情報.csv</td>
+            <td>基本情報</td>
+            <td>8,537</td>
+            <td>22</td>
+            <td>5664</td>
+            <td>1.51</td>
+        </tr>
+
+        <tr>
+            <td>1-2_RS_2024_基本情報_事業概要等.csv</td>
+            <td>基本情報</td>
+            <td>5,948</td>
+            <td>32</td>
+            <td>5664</td>
+            <td>1.05</td>
+        </tr>
+
+        <tr>
+            <td>1-3_RS_2024_基本情報_政策・施策、法令等.csv</td>
+            <td>基本情報</td>
+            <td>14,991</td>
+            <td>28</td>
+            <td>5664</td>
+            <td>2.65</td>
+        </tr>
+
+        <tr>
+            <td>1-4_RS_2024_基本情報_補助率等.csv</td>
+            <td>基本情報</td>
+            <td>5,909</td>
+            <td>18</td>
+            <td>5664</td>
+            <td>1.04</td>
+        </tr>
+
+        <tr>
+            <td>1-5_RS_2024_基本情報_関連事業.csv</td>
+            <td>基本情報</td>
+            <td>6,311</td>
+            <td>17</td>
+            <td>5664</td>
+            <td>1.11</td>
+        </tr>
+
+        <tr>
+            <td>2-1_RS_2024_予算・執行_サマリ.csv</td>
+            <td>予算・執行</td>
+            <td>37,981</td>
+            <td>44</td>
+            <td>5664</td>
+            <td>6.71</td>
+        </tr>
+
+        <tr>
+            <td>2-2_RS_2024_予算・執行_予算種別・歳出予算項目.csv</td>
+            <td>予算・執行</td>
+            <td>55,609</td>
+            <td>26</td>
+            <td>5664</td>
+            <td>9.82</td>
+        </tr>
+
+        <tr>
+            <td>3-1_RS_2024_効果発現経路_目標・実績.csv</td>
+            <td>効果発現経路</td>
+            <td>118,019</td>
+            <td>82</td>
+            <td>5664</td>
+            <td>20.84</td>
+        </tr>
+
+        <tr>
+            <td>3-2_RS_2024_効果発現経路_目標のつながり.csv</td>
+            <td>効果発現経路</td>
+            <td>28,362</td>
+            <td>23</td>
+            <td>5664</td>
+            <td>5.01</td>
+        </tr>
+
+        <tr>
+            <td>4-1_RS_2024_点検・評価.csv</td>
+            <td>点検・評価</td>
+            <td>5,692</td>
+            <td>37</td>
+            <td>5664</td>
+            <td>1.0</td>
+        </tr>
+
+        <tr>
+            <td>5-1_RS_2024_支出先_支出情報.csv</td>
+            <td>支出先</td>
+            <td>194,133</td>
+            <td>32</td>
+            <td>5664</td>
+            <td>34.27</td>
+        </tr>
+
+        <tr>
+            <td>5-2_RS_2024_支出先_支出ブロックのつながり.csv</td>
+            <td>支出先</td>
+            <td>22,662</td>
+            <td>22</td>
+            <td>5664</td>
+            <td>4.0</td>
+        </tr>
+
+        <tr>
+            <td>5-3_RS_2024_支出先_費目・使途.csv</td>
+            <td>支出先</td>
+            <td>33,986</td>
+            <td>20</td>
+            <td>5664</td>
+            <td>6.0</td>
+        </tr>
+
+        <tr>
+            <td>5-4_RS_2024_支出先_国庫債務負担行為等による契約.csv</td>
+            <td>支出先</td>
+            <td>9,290</td>
+            <td>27</td>
+            <td>5664</td>
+            <td>1.64</td>
+        </tr>
+
+        <tr>
+            <td>6-1_RS_2024_その他備考.csv</td>
+            <td>その他</td>
+            <td>5,664</td>
+            <td>14</td>
+            <td>5664</td>
+            <td>1.0</td>
+        </tr>
+
+    </table>
+    
+    <h2>正規化推奨事項</h2>
+
+    <div class="summary">
+        <p><strong>推奨アプローチ:</strong> hybrid_normalization</p>
+        <p><strong>データ保全リスク:</strong> <span class="risk-low">low</span></p>
+        <p><strong>マスターテーブル候補:</strong> 1-2_RS_2024_基本情報_事業概要等.csv</p>
+        <p><strong>関連テーブル数:</strong> 11</p>
+    </div>
+
+    <div style="margin-top: 40px; text-align: center; color: #666; font-size: 0.9em;">
+        Generated by Data Structure Analyzer
+    </div>
+</body>
+</html>

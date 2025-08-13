@@ -1,0 +1,122 @@
+{
+  "overview": {
+    "total_files": 18,
+    "total_records": 553094,
+    "total_fields": 444,
+    "total_size_mb": 229.17
+  },
+  "category_breakdown": {
+    "基本情報": {
+      "files": 5,
+      "records": 41696,
+      "avg_records_per_project": 1.11
+    },
+    "予算・執行": {
+      "files": 2,
+      "records": 93590,
+      "avg_records_per_project": 9.82
+    },
+    "効果発現経路": {
+      "files": 2,
+      "records": 146381,
+      "avg_records_per_project": 5.01
+    },
+    "点検・評価": {
+      "files": 1,
+      "records": 5692,
+      "avg_records_per_project": 1.0
+    },
+    "支出先": {
+      "files": 4,
+      "records": 260071,
+      "avg_records_per_project": 1.64
+    },
+    "その他": {
+      "files": 1,
+      "records": 5664,
+      "avg_records_per_project": 1.0
+    }
+  },
+  "normalization_recommendations": {
+    "recommended_approach": "hybrid_normalization",
+    "master_table_design": {
+      "primary_source": "1-2_RS_2024_基本情報_事業概要等.csv",
+      "additional_sources": [
+        "1-4_RS_2024_基本情報_補助率等.csv"
+      ],
+      "estimated_records": 5664
+    },
+    "related_tables": [
+      {
+        "table_name": "基本情報_details",
+        "source_file": "1-1_RS_2024_基本情報_組織情報.csv",
+        "relationship": "one_to_many",
+        "estimated_records": 8552.64
+      },
+      {
+        "table_name": "基本情報_details",
+        "source_file": "1-3_RS_2024_基本情報_政策・施策、法令等.csv",
+        "relationship": "one_to_many",
+        "estimated_records": 15009.6
+      },
+      {
+        "table_name": "基本情報_details",
+        "source_file": "1-5_RS_2024_基本情報_関連事業.csv",
+        "relationship": "one_to_many",
+        "estimated_records": 6287.040000000001
+      },
+      {
+        "table_name": "予算・執行_details",
+        "source_file": "2-1_RS_2024_予算・執行_サマリ.csv",
+        "relationship": "one_to_many",
+        "estimated_records": 38005.44
+      },
+      {
+        "table_name": "予算・執行_details",
+        "source_file": "2-2_RS_2024_予算・執行_予算種別・歳出予算項目.csv",
+        "relationship": "one_to_many",
+        "estimated_records": 55620.48
+      },
+      {
+        "table_name": "効果発現経路_details",
+        "source_file": "3-1_RS_2024_効果発現経路_目標・実績.csv",
+        "relationship": "one_to_many",
+        "estimated_records": 118037.76
+      },
+      {
+        "table_name": "効果発現経路_details",
+        "source_file": "3-2_RS_2024_効果発現経路_目標のつながり.csv",
+        "relationship": "one_to_many",
+        "estimated_records": 28376.64
+      },
+      {
+        "table_name": "支出先_details",
+        "source_file": "5-1_RS_2024_支出先_支出情報.csv",
+        "relationship": "one_to_many",
+        "estimated_records": 194105.28000000003
+      },
+      {
+        "table_name": "支出先_details",
+        "source_file": "5-2_RS_2024_支出先_支出ブロックのつながり.csv",
+        "relationship": "one_to_many",
+        "estimated_records": 22656.0
+      },
+      {
+        "table_name": "支出先_details",
+        "source_file": "5-3_RS_2024_支出先_費目・使途.csv",
+        "relationship": "one_to_many",
+        "estimated_records": 33984.0
+      },
+      {
+        "table_name": "支出先_details",
+        "source_file": "5-4_RS_2024_支出先_国庫債務負担行為等による契約.csv",
+        "relationship": "one_to_many",
+        "estimated_records": 9288.96
+      }
+    ],
+    "data_preservation": {
+      "risk_level": "low",
+      "mitigation_strategy": "preserve_original_structure_as_backup"
+    }
+  }
+}
