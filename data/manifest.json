@@ -1,0 +1,52 @@
+{
+  "release_tag": "data-v2024-08",
+  "base_url": "https://github.com/team-mirai-volunteer/gov-vis/releases/download/{release_tag}",
+  "profiles": {
+    "raw": [
+      "1-1_RS_2024_基本情報_組織情報.zip",
+      "1-2_RS_2024_基本情報_事業概要等.zip",
+      "1-3_RS_2024_基本情報_政策・施策、法令等.zip",
+      "1-4_RS_2024_基本情報_補助率等.zip",
+      "1-5_RS_2024_基本情報_関連事業.zip",
+      "2-1_RS_2024_予算・執行_サマリ.zip",
+      "2-2_RS_2024_予算・執行_予算種別・歳出予算項目.zip",
+      "3-1_RS_2024_効果発現経路_目標・実績.zip",
+      "3-2_RS_2024_効果発現経路_目標のつながり.zip",
+      "4-1_RS_2024_点検・評価.zip",
+      "5-1_RS_2024_支出先_支出情報.zip",
+      "5-2_RS_2024_支出先_支出ブロックのつながり.zip",
+      "5-3_RS_2024_支出先_費目・使途.zip",
+      "5-4_RS_2024_支出先_国庫債務負担行為等による契約.zip",
+      "6-1_RS_2024_その他備考.zip"
+    ],
+    "processed": [
+      {
+        "name": "extracted_csvs-20240814.tar.zst",
+        "sha256": "placeholder-sha256-for-csv-archive"
+      },
+      {
+        "name": "full_feather-20240814.tar.zst",
+        "sha256": "placeholder-sha256-for-feather-archive"
+      }
+    ]
+  },
+  "assets": {
+    "1-1_RS_2024_基本情報_組織情報.zip": { "sha256": null, "unpack": "zip", "dest": "data/extracted" },
+    "1-2_RS_2024_基本情報_事業概要等.zip": { "sha256": null, "unpack": "zip", "dest": "data/extracted" },
+    "1-3_RS_2024_基本情報_政策・施策、法令等.zip": { "sha256": null, "unpack": "zip", "dest": "data/extracted" },
+    "1-4_RS_2024_基本情報_補助率等.zip": { "sha256": null, "unpack": "zip", "dest": "data/extracted" },
+    "1-5_RS_2024_基本情報_関連事業.zip": { "sha256": null, "unpack": "zip", "dest": "data/extracted" },
+    "2-1_RS_2024_予算・執行_サマリ.zip": { "sha256": null, "unpack": "zip", "dest": "data/extracted" },
+    "2-2_RS_2024_予算・執行_予算種別・歳出予算項目.zip": { "sha256": null, "unpack": "zip", "dest": "data/extracted" },
+    "3-1_RS_2024_効果発現経路_目標・実績.zip": { "sha256": null, "unpack": "zip", "dest": "data/extracted" },
+    "3-2_RS_2024_効果発現経路_目標のつながり.zip": { "sha256": null, "unpack": "zip", "dest": "data/extracted" },
+    "4-1_RS_2024_点検・評価.zip": { "sha256": null, "unpack": "zip", "dest": "data/extracted" },
+    "5-1_RS_2024_支出先_支出情報.zip": { "sha256": null, "unpack": "zip", "dest": "data/extracted" },
+    "5-2_RS_2024_支出先_支出ブロックのつながり.zip": { "sha256": null, "unpack": "zip", "dest": "data/extracted" },
+    "5-3_RS_2024_支出先_費目・使途.zip": { "sha256": null, "unpack": "zip", "dest": "data/extracted" },
+    "5-4_RS_2024_支出先_国庫債務負担行為等による契約.zip": { "sha256": null, "unpack": "zip", "dest": "data/extracted" },
+    "6-1_RS_2024_その他備考.zip": { "sha256": null, "unpack": "zip", "dest": "data/extracted" },
+    "extracted_csvs-20240814.tar.zst": { "sha256": "placeholder-sha256-for-csv-archive", "unpack": "tar.zst", "dest": "data/extracted" },
+    "full_feather-20240814.tar.zst": { "sha256": "placeholder-sha256-for-feather-archive", "unpack": "tar.zst", "dest": "data/full_feather" }
+  }
+}

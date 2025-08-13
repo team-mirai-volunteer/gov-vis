@@ -40,5 +40,26 @@ temp/
 *.tmp
 
 # large data directories
-/data/processed/
-/data/raw/
+/downloads/
+/data/extracted/
+/data/full_feather/
+/data/ai_analysis_feather/
+/data/ai_investigation/
+/data/ai_ultimate_spreadsheet/
+/data/improved_ai_search/
+/data/performance_comparison/
+/data/rs_official_verification/
+/data/structure_analysis/
+
+# Data files
+*.zip
+*.feather
+*.parquet
+*.csv
+*.xlsx
+*.json
+*.html
+
+# Keep manifest
+!/data/manifest.json
+!/data/full_feather/column_mapping.json

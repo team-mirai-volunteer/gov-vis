@@ -24,46 +24,39 @@ pip install -r requirements.txt
 pip install polars pyarrow  # 高速データ処理用（オプション）
 ```
 
-## 使い方
+## クイックスタート
 
-### 手動ダウンロード方式（推奨）
+### 1. 前提条件
+- `python3`
+- `make`
+- `pip`
 
-RSシステムのデータは手動でダウンロードする必要があります。
-
-1. [RSシステム](https://rssystem.go.jp)にアクセス
-2. データダウンロードページから必要なZIPファイルをダウンロード
-3. `downloads`ディレクトリを作成し、ダウンロードしたZIPファイルを配置
-
-```bash
-mkdir downloads
-# ダウンロードしたZIPファイルをdownloadsフォルダに配置
-```
-
-4. データ処理スクリプトを実行
+### 2. セットアップとデータ取得
+プロジェクトのセットアップ、データのダウンロード、および前処理は `make` コマンドで自動的に実行できます。
 
 ```bash
-# 基本データ処理（従来方式）
-python scripts/process_local_data.py
+# 依存関係のインストール（初回のみ）
+pip install -r requirements.txt
+pip install tqdm zstandard
 
-# データ構造分析
-python scripts/data_structure_analyzer.py
+# データのダウンロードと展開
+# GitHub Releasesから自動的にデータを取得し、'downloads' と 'data/extracted' に配置します
+make data
 
-# 全カラムFeather変換（推奨）
-python scripts/full_feather_converter.py
-
-# AI関連事業の包括的検索
-python scripts/feather_ai_search.py
-
-# AI検索の問題調査・改善（最新）
-python scripts/ai_match_investigation.py  # 検索問題の調査
-python scripts/improved_ai_search.py      # 広義AI検索（443件・包括的）
-python scripts/ai_ultimate_spreadsheet.py  # 狭義AI完全スプレッドシート（213件×432列・厳密）
-
-# RSシステム公式データとの検証
-python scripts/rs_official_verification.py  # 公式152事業との照合検証
+# データの前処理と分析用データセットの生成
+# 既存のスクリプトを実行し、featherファイルなどを生成します
+make build
 ```
 
-注意: RSシステムはSPA構造のため自動ダウンロードは困難です。手動ダウンロードが確実で推奨されます。
+## データ管理
+
+このプロジェクトのデータは、共同開発の再現性と効率性を高めるために、コードと分離して管理されています。
+
+- **データソース**: 処理済みのデータセットは、GitHub Releases にバージョン管理されて保存されています。
+- **マニフェスト**: `data/manifest.json` ファイルが、ダウンロードするべきデータファイル（バージョン、URL、チェックサム）を定義します。
+- **自動化**: `make data` コマンドは `scripts/bootstrap_data.py` を実行し、マニフェストに基づいてGitHub Releasesからデータを安全かつ効率的にダウンロード・展開します。
+
+手動でデータをダウンロードする必要はありません。新しい開発者は `make data` を実行するだけで、分析に必要なすべてのデータセットを正確に再現できます。
 
 ## プロジェクト構造
 
@@ -79,9 +72,10 @@ rs-visualization/
 │   ├── ai_ultimate_spreadsheet.py  # 究極の完全AIスプレッドシート（432列）
 │   ├── rs_official_verification.py  # RS公式データ照合検証
 │   └── performance_comparison_report.py # パフォーマンス比較
-├── downloads/                       # 手動ダウンロードZIPファイル配置用
+├── downloads/                       # (自動生成) データアーカイブのダウンロード先
 ├── data/
-│   ├── extracted/                   # 解凍された元データ（15ファイル）
+│   ├── manifest.json                # (バージョン管理) データマニフェスト
+│   ├── extracted/                   # (自動生成) 解凍された元データ
 │   ├── full_feather/                # 全カラムFeatherテーブル（444カラム）
 │   ├── structure_analysis/          # データ構造分析結果
 │   ├── ai_analysis_feather/         # AI検索結果（従来手法）
