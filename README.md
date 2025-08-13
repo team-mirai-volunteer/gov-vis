@@ -53,15 +53,14 @@ python scripts/quick_feather_converter.py
 
 # AI関連事業の包括的検索
 python scripts/feather_ai_search.py
+
+# AI検索の問題調査・改善（最新）
+python scripts/ai_match_investigation.py  # 検索問題の調査
+python scripts/improved_ai_search.py      # 改善されたAI検索
+python scripts/ai_basic_form_spreadsheet.py  # 基本形AIスプレッドシート生成
 ```
 
-### 自動ダウンロード試行（制限あり）
-
-```bash
-python scripts/fetch_rs_data.py
-```
-
-注意: SPA構造により直接HTTP取得は制限されています。手動ダウンロードが確実です。
+注意: RSシステムはSPA構造のため自動ダウンロードは困難です。手動ダウンロードが確実で推奨されます。
 
 ## プロジェクト構造
 
@@ -72,17 +71,20 @@ rs-visualization/
 │   ├── data_structure_analyzer.py  # データ構造詳細分析
 │   ├── quick_feather_converter.py  # 正規化・Feather変換
 │   ├── feather_ai_search.py        # AI関連事業検索
-│   ├── performance_comparison_report.py # パフォーマンス比較
-│   └── fetch_rs_data.py            # 自動ダウンロード（実験的）
+│   ├── ai_match_investigation.py   # AI検索問題調査
+│   ├── improved_ai_search.py       # 改善されたAI検索
+│   ├── ai_basic_form_spreadsheet.py # 基本形AIスプレッドシート生成
+│   └── performance_comparison_report.py # パフォーマンス比較
 ├── downloads/                       # 手動ダウンロードZIPファイル配置用
 ├── data/
 │   ├── extracted/                   # 解凍された元データ（15ファイル）
-│   ├── processed/                   # 統合CSV（553,094行）
 │   ├── normalized_feather/          # 正規化Featherテーブル（5テーブル）
 │   ├── structure_analysis/          # データ構造分析結果
-│   ├── ai_analysis_feather/         # AI検索結果（新手法）
+│   ├── ai_analysis_feather/         # AI検索結果（従来手法）
+│   ├── ai_investigation/            # AI検索問題調査結果
+│   ├── improved_ai_search/          # 改善されたAI検索結果
+│   ├── ai_basic_form_spreadsheet/   # 基本形AIスプレッドシート
 │   ├── performance_comparison/      # パフォーマンス比較レポート
-│   └── reports/                     # 基本分析レポート
 ├── requirements.txt                 # 基本依存パッケージ
 ├── CLAUDE.md                        # プロジェクト詳細ガイド
 ├── .gitignore                       # Git除外設定
@@ -135,7 +137,25 @@ rs-visualization/
 | 検索手法 | AI関連事業（広範囲） | AI限定事業 | 実行時間 | 改善率 |
 |---------|-------------------|-----------|---------|--------|
 | **従来手法** | 52件 (0.92%) | 4件 (0.07%) | 76.3秒 | - |
-| **正規化手法** | **892件 (15.7%)** | **57件 (1.0%)** | **44.6秒** | **+1,615%** |
+| **正規化手法** | 892件 (15.7%) | 57件 (1.0%) | 44.6秒 | +1,615% |
+| **改善済み手法** | **892件 (15.7%)** | **443件 (7.8%)** | **54.5秒** | **+10,650%** |
+
+### 🚨 AI検索の重要な発見と改善
+
+**問題発見**: 当初のAI限定検索で57件しか見つからなかった原因を徹底調査した結果、以下の重大な問題が判明：
+
+#### ❌ 検索アンチパターン（避けるべき手法）
+1. **単語境界制限**: `\bAI\b` パターンが「生成AI」「AIシステム」等の複合語を除外
+2. **全角文字無視**: 日本語文書でよく使われる「ＡＩ」が検索対象外
+3. **表記バリエーション見落とし**: 「A.I.」「Ａ.Ｉ.」等の略記表記が未対応
+4. **過度な制限**: 文脈を無視した厳格すぎるパターンマッチング
+
+#### ✅ 改善されたパターン
+- **基本形**: `AI|ＡＩ|A\.I\.|Ａ\.Ｉ\.`
+- **複合語**: `生成AI|AIシステム|AI活用` 等
+- **柔軟なマッチング**: 単語境界制限を緩和
+
+**結果**: AI限定事業が **57件 → 443件** (677%改善) に向上
 
 ## 🗂️ 出力ファイル・レポート
 
@@ -148,9 +168,23 @@ rs-visualization/
 - `data/normalized_feather/ai_search_metadata.json`: AI検索用メタデータ
 
 ### AI関連事業検索結果
-- `data/ai_analysis_feather/ai_related_projects_feather.json`: AI関連事業892件の詳細データ
-- `data/ai_analysis_feather/ai_only_projects_feather.json`: AI限定事業57件の詳細データ
-- `data/ai_analysis_feather/feather_search_report.html`: AI検索結果の可視化レポート
+- `data/ai_analysis_feather/ai_related_projects_feather.json`: AI関連事業892件の詳細データ（従来手法）
+- `data/ai_analysis_feather/ai_only_projects_feather.json`: AI限定事業57件の詳細データ（従来手法）
+- `data/ai_analysis_feather/feather_search_report.html`: AI検索結果の可視化レポート（従来手法）
+
+### 改善されたAI検索結果
+- `data/improved_ai_search/ai_exact_improved.json`: AI限定事業443件の詳細データ（改善手法）
+- `data/improved_ai_search/ai_all_improved.json`: AI包括事業443件の詳細データ（改善手法）
+- `data/improved_ai_search/improved_search_report.html`: 改善されたAI検索結果レポート
+
+### AI検索問題調査結果
+- `data/ai_investigation/ai_investigation_report.html`: 検索問題の詳細調査レポート
+- `data/ai_investigation/ai_match_investigation_report.json`: 調査結果の完全データ
+
+### 基本形AIスプレッドシート
+- `data/ai_basic_form_spreadsheet/ai_basic_form_complete_data.xlsx`: 基本形AI事業267行×20列の完全スプレッドシート
+- `data/ai_basic_form_spreadsheet/ai_basic_form_complete_data.csv`: CSV形式
+- `data/ai_basic_form_spreadsheet/ai_basic_form_report.html`: スプレッドシート詳細レポート
 
 ### パフォーマンス比較
 - `data/performance_comparison/performance_comparison_report.html`: 手法比較の詳細レポート
@@ -188,6 +222,13 @@ rs-visualization/
 - **検索範囲拡大**: 6フィールド → 全テキストフィールド（5テーブル横断）
 - **パターン強化**: 19用語 → 86種類の包括的AI関連パターン
 - **府省庁分布**: 経済産業省133件、国土交通省106件、デジタル庁101件が上位
+
+### AI検索精度の根本的改善（重要成果）
+- **問題調査**: AI限定検索の深刻な問題（単語境界制限等）を特定・修正
+- **検索改善**: AI限定事業 57件 → **443件** (677%向上)
+- **アンチパターン特定**: 避けるべき検索パターンを文書化
+- **完全データ**: 基本形AI事業267行×20列の完全スプレッドシート作成
+- **実用性向上**: 政策立案・分析に直接活用可能な正確なデータを提供
 
 ### 正規化による構造改善
 - **リレーショナル設計**: 事業マスターと関連テーブルの適切な分離

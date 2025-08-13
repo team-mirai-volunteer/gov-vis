@@ -22,39 +22,82 @@ pip install -r requirements.txt
 
 ### Data Processing
 ```bash
-# Process manually downloaded data (primary method)
+# Process manually downloaded data (basic method)
 python scripts/process_local_data.py
 
-# Attempt automatic download (limited due to SPA architecture)
-python scripts/fetch_rs_data.py
+# Analyze data structure and relationships
+python scripts/data_structure_analyzer.py
+
+# Convert to optimized Feather format (recommended)
+python scripts/quick_feather_converter.py
+
+# Search for AI-related projects (legacy method)
+python scripts/feather_ai_search.py
+
+# Investigate AI search problems and improvements (latest)
+python scripts/ai_match_investigation.py     # Problem diagnosis
+python scripts/improved_ai_search.py         # Improved AI search
+python scripts/ai_basic_form_spreadsheet.py  # Generate complete spreadsheet
 ```
 
 ## Architecture
 
 ### Data Processing Pipeline
 
-The project uses two main scripts with distinct responsibilities:
+The project uses a 7-stage data processing pipeline with advanced AI search capabilities:
 
-1. **`process_local_data.py`** (RSDataProcessor class) - Primary workflow
+1. **`process_local_data.py`** (RSDataProcessor class) - Basic data processing
    - Processes manually downloaded ZIP files from `downloads/` directory
    - Extracts and analyzes CSV/Excel files
-   - Generates analysis reports in HTML and JSON formats
+   - Generates basic analysis reports in HTML and JSON formats
    - Handles multiple Japanese encodings automatically (UTF-8, Shift-JIS, CP932, etc.)
-   - Successfully processed 2024 dataset: 15 ZIP files → 553,094 records
 
-2. **`fetch_rs_data.py`** (RSSystemDataFetcher class) - Limited functionality
-   - Attempts basic HTTP-based automatic data download
-   - Currently limited due to SPA architecture and dynamic URL generation
-   - Falls back to placeholder URLs when automatic download fails
+2. **`data_structure_analyzer.py`** - Data structure analysis
+   - Analyzes relationships between 15 CSV files
+   - Identifies normalization opportunities
+   - Evaluates data quality and coverage
+
+3. **`quick_feather_converter.py`** - Data normalization and optimization
+   - Converts CSV data to normalized Feather tables
+   - Creates 5 relational tables from original 15 files
+   - Achieves 93% size reduction (229MB → 15MB)
+
+4. **`feather_ai_search.py`** - Initial AI-related project search (legacy)
+   - Searches across all tables for AI-related terms
+   - Uses 86 comprehensive search patterns
+   - Generates detailed analysis reports
+   - **Note**: Contains search pattern limitations (see AI Search Anti-patterns below)
+
+5. **`ai_match_investigation.py`** - AI search problem diagnosis
+   - Investigates why AI exact match search finds only 57 instead of expected 152+ projects
+   - Identifies critical search pattern limitations
+   - Documents search anti-patterns to avoid
+   - Provides comprehensive problem analysis
+
+6. **`improved_ai_search.py`** - Improved AI search system
+   - Implements corrected search patterns without word boundary limitations
+   - Supports full-width characters (ＡＩ) and compound terms (生成AI)
+   - Achieves 677% improvement: 57 → 443 AI projects
+   - Uses flexible pattern matching for accurate results
+
+7. **`ai_basic_form_spreadsheet.py`** - Complete data export
+   - Generates comprehensive spreadsheet of basic AI form projects
+   - Includes all 20 variables across 5 tables
+   - Exports 267 projects with complete data coverage
+   - Provides Excel, CSV, and detailed analysis reports
 
 ### Data Flow
 
-#### Manual Download Flow (Primary Method)
+#### Recommended Processing Flow
 1. User manually downloads ZIP files from https://rssystem.go.jp
 2. Places files in `downloads/` directory
-3. Script extracts to `data/extracted/`
-4. Analyzes and saves reports to `data/reports/`
-5. Merged data saved to `data/processed/`
+3. Basic processing extracts to `data/extracted/`
+4. Structure analysis saves to `data/structure_analysis/`
+5. Normalized tables saved to `data/normalized_feather/`
+6. AI search results saved to `data/ai_analysis_feather/` (legacy)
+7. AI investigation results saved to `data/ai_investigation/`
+8. Improved AI search results saved to `data/improved_ai_search/`
+9. Complete AI spreadsheets saved to `data/ai_basic_form_spreadsheet/`
 
 #### Proven Results (2024 Dataset)
 - **Downloaded**: 15 ZIP files (各カテゴリの詳細データ)
@@ -66,7 +109,7 @@ The project uses two main scripts with distinct responsibilities:
 
 - **Encoding Handling**: Japanese government data uses various encodings. The scripts automatically detect and handle UTF-8, Shift-JIS, CP932, UTF-8-BOM, ISO-2022-JP, and EUC-JP.
 
-- **RS System Limitations**: The website is a React SPA with session-based dynamic URLs, requiring manual download for reliable data access.
+- **RS System Architecture**: The website is a React SPA with session-based dynamic URLs, making manual download the most reliable approach.
 
 - **Data Structure**: RS System provides multiple data types across 5 categories:
   - Basic Information (組織情報、事業概要等)
@@ -79,11 +122,22 @@ The project uses two main scripts with distinct responsibilities:
 
 ## Output Files
 
-#### Manual Processing (Primary Method)
-- `data/reports/analysis_report.json` - Detailed analysis in JSON format
+#### Data Processing and Analysis
+- `data/reports/analysis_report.json` - Basic analysis in JSON format
 - `data/reports/analysis_report.html` - Visual HTML report
 - `data/processed/merged_data.csv` - Combined dataset (concatenated, 553,094 records)
+- `data/structure_analysis/` - Detailed data structure analysis
+- `data/normalized_feather/*.feather` - Optimized relational tables
 - `downloads/` - Manual download staging area for ZIP files
+
+#### AI Search Results
+- `data/ai_analysis_feather/` - Legacy AI search results (57 AI projects)
+- `data/improved_ai_search/` - Improved AI search results (443 AI projects)
+- `data/ai_investigation/` - AI search problem diagnosis and analysis
+- `data/ai_basic_form_spreadsheet/` - Complete AI project spreadsheets (267 projects × 20 variables)
+
+#### Performance and Comparison Reports
+- `data/performance_comparison/` - Method comparison reports
 
 ## Data Processing Results
 
@@ -111,6 +165,48 @@ Based on actual RS System 2024 data processing:
 - Budget ID merge provides normalized project-centric view
 - Budget ID merge results match official RS System project count
 
+### AI Search Breakthrough Results
+- **Problem Discovery**: Initial AI search found only 57 projects due to restrictive patterns
+- **Root Cause Analysis**: Word boundary limitations and full-width character ignorance
+- **Solution Implementation**: Flexible pattern matching with comprehensive character support
+- **Final Results**: 443 AI projects identified (677% improvement)
+- **Data Export**: Complete 267×20 spreadsheet of basic AI form projects generated
+
+## Critical Findings: AI Search Anti-patterns
+
+### ❌ Search Patterns to Avoid (Anti-patterns)
+
+Based on comprehensive investigation of AI search problems, the following patterns should be avoided:
+
+1. **Word Boundary Over-restriction**: `\bAI\b`
+   - **Problem**: Excludes compound terms like "生成AI", "AIシステム", "AI活用"
+   - **Impact**: Misses 386 out of 443 AI projects (87% false negatives)
+   - **Why it fails**: Japanese text often uses AI in compound forms
+
+2. **Full-width Character Ignorance**: Searching only half-width "AI"
+   - **Problem**: Ignores "ＡＩ" (full-width) commonly used in Japanese documents
+   - **Impact**: Misses significant portion of Japanese government documents
+   - **Evidence**: 153 instances of "ＡＩ" found in dataset
+
+3. **Abbreviation Blindness**: Not accounting for "A.I." variations
+   - **Problem**: Misses "A.I.", "Ａ.Ｉ." notation styles
+   - **Impact**: Excludes formal documentation patterns
+
+4. **Context-Ignorant Exact Matching**: Overly rigid pattern matching
+   - **Problem**: Fails to recognize AI in natural language contexts
+   - **Solution**: Use flexible patterns with appropriate boundaries
+
+### ✅ Recommended Patterns
+
+- **Basic Forms**: `AI|ＡＩ|A\.I\.|Ａ\.Ｉ\.`
+- **Compound Terms**: `生成AI|生成ＡＩ|AI[ア-ン\w]*|ＡＩ[ア-ン\w]*`
+- **Flexible Matching**: Remove overly restrictive word boundaries
+
+### Performance Impact
+- **Legacy Method**: 57 AI projects (1.0%)
+- **Improved Method**: 443 AI projects (7.8%)
+- **Improvement**: 677% increase in accuracy
+
 ## Error Handling
 
 The scripts include robust error handling for:
@@ -119,3 +215,5 @@ The scripts include robust error handling for:
 - Encoding detection failures (supports UTF-8, Shift-JIS, CP932, EUC-JP, ISO-2022-JP)
 - Memory management for large datasets
 - Mixed data types in columns (automatic dtype handling)
+- Search pattern validation and compilation errors
+- Full-width/half-width character compatibility issues

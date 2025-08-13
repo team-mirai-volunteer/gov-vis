@@ -1,0 +1,60 @@
+{
+  "basic_statistics": {
+    "total_projects": 267,
+    "total_columns": 20,
+    "total_ai_matches": "1911",
+    "average_ai_matches_per_project": 7.16,
+    "max_ai_matches_per_project": "105"
+  },
+  "ministry_distribution": {
+    "経済産業省": 58,
+    "文部科学省": 44,
+    "総務省": 30,
+    "厚生労働省": 19,
+    "国土交通省": 17,
+    "デジタル庁": 16,
+    "内閣府": 13,
+    "防衛省": 13,
+    "農林水産省": 10,
+    "外務省": 10,
+    "環境省": 6,
+    "警察庁": 4,
+    "消防庁": 4,
+    "特許庁": 3,
+    "こども家庭庁": 2,
+    "文化庁": 2,
+    "消費者庁": 2,
+    "復興庁": 2,
+    "林野庁": 2,
+    "金融庁": 2
+  },
+  "table_detection_stats": {
+    "projects": "152",
+    "expenditure_info": "133",
+    "goals_performance": "82",
+    "expenditure_connections": "3",
+    "contracts": "4"
+  },
+  "data_coverage": {
+    "columns_with_data": 17,
+    "top_populated_columns": {
+      "goals_performance_index": "267",
+      "goals_performance_アクティビティ／活動目標／成果目標": "267",
+      "goals_performance_活動指標／成果指標": "267",
+      "projects_事業の概要": "267",
+      "projects_事業の目的": "267",
+      "projects_事業名": "267",
+      "projects_府省庁": "267",
+      "projects_現状・課題": "267",
+      "expenditure_connections_index": "259",
+      "expenditure_connections_支出先の支出先ブロック名": "259",
+      "expenditure_connections_資金の流れの補足情報": "259",
+      "expenditure_info_index": "245",
+      "expenditure_info_契約概要": "245",
+      "expenditure_info_支出先名": "245",
+      "contracts_index": "23",
+      "contracts_契約先名（国庫債務負担行為等による契約）": "23",
+      "contracts_契約概要（契約名）（国庫債務負担行為等による契約）": "23"
+    }
+  }
+}

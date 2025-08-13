@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>AI検索マッチング問題調査レポート</title>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; margin: 20px; line-height: 1.6; }
+        h1 { color: #dc3545; text-align: center; border-bottom: 3px solid #dc3545; padding-bottom: 10px; }
+        h2 { color: #333; border-bottom: 2px solid #ddd; padding-bottom: 5px; }
+        .alert { background-color: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 5px; margin: 15px 0; }
+        .success { background-color: #d4edda; border: 1px solid #c3e6cb; }
+        .error { background-color: #f8d7da; border: 1px solid #f5c6cb; }
+        .metric { font-size: 1.5em; font-weight: bold; text-align: center; margin: 10px 0; }
+        .current { color: #dc3545; }
+        .potential { color: #28a745; }
+        .missed { color: #fd7e14; }
+        table { border-collapse: collapse; width: 100%; margin: 20px 0; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .example { background-color: #f8f9fa; padding: 10px; margin: 10px 0; border-left: 4px solid #007bff; }
+        .code { font-family: monospace; background-color: #f8f9fa; padding: 2px 4px; }
+    </style>
+</head>
+<body>
+    <h1>🔍 AI検索マッチング問題調査レポート</h1>
+    
+    <div class="alert error">
+        <h3>⚠️ 問題の概要</h3>
+        <p>現在の検索パターン <span class="code">\bAI\b</span> では<strong>57件</strong>しか見つからないが、
+        改善されたパターンでは<strong>443件</strong>の可能性があります。</p>
+        <div class="metric missed">見落とし: +386件 (677.2%改善)</div>
+    </div>
+    
+    <h2>📊 検索結果比較</h2>
+    <table>
+        <tr>
+            <th>検索方法</th>
+            <th>マッチ数</th>
+            <th>特徴</th>
+        </tr>
+        <tr>
+            <td><strong>現在のパターン</strong><br><span class="code">\bAI\b</span></td>
+            <td class="current">57件</td>
+            <td>単語境界あり・複合語除外</td>
+        </tr>
+        <tr>
+            <td><strong>改善されたパターン</strong><br><span class="code">AI|ＡＩ|A\.I\.</span></td>
+            <td class="potential">443件</td>
+            <td>境界制限緩和・全角対応</td>
+        </tr>
+        <tr>
+            <td><strong>複合語パターン</strong><br><span class="code">生成AI|AI搭載</span></td>
+            <td class="potential">443件</td>
+            <td>複合語・派生語対応</td>
+        </tr>
+        <tr class="success">
+            <td><strong>統合結果</strong></td>
+            <td class="potential">443件</td>
+            <td>包括的AI検索</td>
+        </tr>
+    </table>
+    
+    <h2>🎯 発見された問題</h2>
+    
+    <div class="alert">
+        <h4>1. 単語境界制限の問題</h4>
+        <p>現在の <span class="code">\bAI\b</span> パターンは以下を除外：</p>
+        <ul>
+            <li>「生成AI」「AIシステム」などの複合語</li>
+            <li>「AI搭載」「AI活用」などの連続表記</li>
+            <li>文の途中での自然な使用</li>
+        </ul>
+    </div>
+    
+    <div class="alert">
+        <h4>2. 全角文字の未対応</h4>
+        <p>日本語文書でよく使われる全角「ＡＩ」が検索対象外</p>
+    </div>
+    
+    <div class="alert">
+        <h4>3. 表記バリエーションの見落とし</h4>
+        <p>「A.I.」「Ａ.Ｉ.」などの略記表記が未対応</p>
+    </div>
+    
+    <h2>📝 見落とし例（サンプル）</h2>
+
+    <div class="example">
+        <strong>例 1: improved_pattern</strong><br>
+        <strong>プロジェクトID:</strong> 4097<br>
+        <strong>テーブル:</strong> expenditure_info<br>
+        <strong>フィールド:</strong> 契約概要<br>
+        <strong>マッチパターン:</strong> <span class="code">ＡＩ</span><br>
+        <strong>テキスト:</strong> ＡＩＳ情報を利用した船舶動静情報サービスの使用契約...<br>
+        <strong>マッチ:</strong> ＡＩ
+    </div>
+
+    <div class="example">
+        <strong>例 2: improved_pattern</strong><br>
+        <strong>プロジェクトID:</strong> 4099<br>
+        <strong>テーブル:</strong> expenditure_info<br>
+        <strong>フィールド:</strong> 支出先名<br>
+        <strong>マッチパターン:</strong> <span class="code">ＡＩ</span><br>
+        <strong>テキスト:</strong> 株式会社ＡＩＴ...<br>
+        <strong>マッチ:</strong> ＡＩ
+    </div>
+
+    <div class="example">
+        <strong>例 3: improved_pattern</strong><br>
+        <strong>プロジェクトID:</strong> 4099<br>
+        <strong>テーブル:</strong> expenditure_info<br>
+        <strong>フィールド:</strong> 支出先名<br>
+        <strong>マッチパターン:</strong> <span class="code">ＡＩ</span><br>
+        <strong>テキスト:</strong> 株式会社ＡＩＴ...<br>
+        <strong>マッチ:</strong> ＡＩ
+    </div>
+
+    <div class="example">
+        <strong>例 4: improved_pattern</strong><br>
+        <strong>プロジェクトID:</strong> 7171<br>
+        <strong>テーブル:</strong> expenditure_info<br>
+        <strong>フィールド:</strong> 契約概要<br>
+        <strong>マッチパターン:</strong> <span class="code">ＡＩ</span><br>
+        <strong>テキスト:</strong> 令和５年度補正ＰＨＲ社会実装加速化事業（介護領域におけるＰＨ／Ｒ利活用及びヘルスケア分野における生成ＡＩ活用に向けた調査事／業）...<br>
+        <strong>マッチ:</strong> ＡＩ
+    </div>
+
+    <div class="example">
+        <strong>例 5: improved_pattern</strong><br>
+        <strong>プロジェクトID:</strong> 1033<br>
+        <strong>テーブル:</strong> projects<br>
+        <strong>フィールド:</strong> 事業の概要<br>
+        <strong>マッチパターン:</strong> <span class="code">AI</span><br>
+        <strong>テキスト:</strong> １．日・バングラデシュＥＰＡ交渉／　令和５年に行われた「あり得べき日・バングラデシュＥＰＡに関する共同研究」の報告書（令和５年１２月公表）における両国間のＥＰＡ交渉の開始が提言されたことを踏まえ、令和６年３月、日・バングラデシュＥＰＡの交渉を開始することを決定した。今後、スピード感をもって交渉妥結に...<br>
+        <strong>マッチ:</strong> ai
+    </div>
+
+    <h2>🔧 推奨改善案</h2>
+    
+    <div class="alert success">
+        <h4>新しい検索パターン</h4>
+        <ul>
+            <li><span class="code">AI|ＡＩ</span> - 基本形・全角対応</li>
+            <li><span class="code">A\.I\.|Ａ\.Ｉ\.</span> - 略記対応</li>
+            <li><span class="code">生成AI|AIシステム|AI活用</span> - 複合語対応</li>
+        </ul>
+        <p><strong>期待効果:</strong> 443件（+386件）</p>
+    </div>
+    
+    <div style="margin-top: 40px; text-align: center; color: #666; font-size: 0.9em;">
+        Generated by AI Match Investigator
+    </div>
+</body>
+</html>
