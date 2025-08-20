@@ -42,3 +42,4 @@ temp/
 # large data directories
 /data/processed/
 /data/raw/
+/data/project_master/rs_project_master_with_details.csv
