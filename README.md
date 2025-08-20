@@ -113,10 +113,22 @@ python scripts/create_project_master_with_json.py
 # → data/project_master/
 ```
 
+### ステップ6: 統計分析・予算分析
+```bash
+# 記述統計分析（バグ修正版）
+python scripts/bug_fixed_analysis.py
+# → data/bug_fixed_analysis/
+
+# 2024年度予算分析・上位1%事業特定
+python scripts/simple_budget_top1_analysis.py
+# → data/budget_analysis_2024/
+```
+
 **最終成果物**: 
 - **5,664事業 × 95列** の事業マスターリスト
 - **基本情報68列** + **JSON詳細9列** + **サマリー18列**
 - **データロスなし**: 複数レコードテーブルをJSON形式で完全保持
+- **2024年度予算分析**: 上位1%事業（48事業）が全体予算の79.4%を占める
 
 ## プロジェクト構造
 
@@ -127,12 +139,14 @@ rs-visualization/
 │   ├── data_structure_analyzer.py  # データ構造詳細分析
 │   ├── full_feather_converter.py   # 全カラムFeather変換（444カラム）
 │   ├── column_integrity_check.py   # 列完全性検証
+│   ├── create_project_master_with_json.py # 事業マスターリスト作成
 │   ├── feather_ai_search.py        # AI関連事業検索
 │   ├── ai_match_investigation.py   # AI検索問題調査
 │   ├── improved_ai_search.py       # 改善されたAI検索
 │   ├── ai_ultimate_spreadsheet.py  # 究極の完全AIスプレッドシート（432列）
 │   ├── rs_official_verification.py  # RS公式データ照合検証
-│   ├── create_project_master_with_json.py # 事業マスターリスト作成
+│   ├── bug_fixed_analysis.py       # 記述統計分析（バグ修正版）
+│   ├── simple_budget_top1_analysis.py # 2024年度予算上位1%分析
 │   └── performance_comparison_report.py # パフォーマンス比較
 ├── downloads/                       # 手動ダウンロードZIPファイル配置用
 ├── data/
@@ -147,7 +161,9 @@ rs-visualization/
 │   ├── ai_ultimate_spreadsheet/     # 究極の完全AIスプレッドシート（432列）
 │   ├── rs_official_verification/    # RS公式データ照合検証結果
 │   ├── project_master/              # 事業マスターリスト（1行1事業+JSON詳細）
-│   ├── performance_comparison/      # パフォーマンス比較レポート
+│   ├── bug_fixed_analysis/          # 記述統計分析結果（修正版）
+│   ├── budget_analysis_2024/        # 2024年度予算分析・上位1%事業
+│   └── performance_comparison/      # パフォーマンス比較レポート
 ├── requirements.txt                 # 基本依存パッケージ
 ├── CLAUDE.md                        # プロジェクト詳細ガイド
 ├── .gitignore                       # Git除外設定
@@ -310,6 +326,16 @@ rs-visualization/
 - `data/project_master/project_master_columns.txt`: 95列の詳細構成
 - `data/project_master/project_master_report.html`: 作成レポート
 
+### 記述統計分析結果（バグ修正版）
+- `data/bug_fixed_analysis/fixed_analysis_report.html`: 修正版統計分析レポート
+- `data/bug_fixed_analysis/fixed_analysis_results.json`: 統計分析結果データ
+- `data/bug_fixed_analysis/fixed_key_insights.txt`: 主要洞察サマリー
+
+### 2024年度予算分析結果
+- `data/budget_analysis_2024/top_1_percent_projects_simple.csv`: 上位1%事業リスト（48事業）
+- `data/budget_analysis_2024/top_1_percent_report_simple.html`: 予算集中度分析レポート
+- **重要な発見**: 上位1%の48事業が全体予算146.6兆円の79.4%を占める
+
 ### パフォーマンス比較
 - `data/performance_comparison/performance_comparison_report.html`: 手法比較の詳細レポート
 - `data/performance_comparison/performance_comparison_report.json`: 比較データ（JSON形式）
@@ -340,6 +366,16 @@ rs-visualization/
 | **処理時間** | 76.3秒 | 44.6秒 | **71%高速化** |
 | **メモリ効率** | 単一巨大テーブル | 分散テーブル | **最適化** |
 | **検索精度** | 限定フィールド | 全フィールド | **包括的** |
+
+### 2024年度予算分析の主要発見
+| 指標 | 値 | 詳細 |
+|------|-----|------|
+| **総予算額** | 146.6兆円 | 4,726事業の合計 |
+| **上位1%閾値** | 2,530億円 | 上位48事業の境界 |
+| **予算集中度** | 79.4% | 上位1%事業の占有率 |
+| **最大事業** | 30.04兆円 | 基礎年金給付（厚生労働省） |
+| **平均予算** | 310億円 | 全事業の平均額 |
+| **中央値** | 2.8億円 | 予算分布の中央値 |
 
 ### AI関連事業発見の飛躍的向上
 - **従来見落とし**: 840件のAI関連事業を新たに発見

@@ -31,6 +31,9 @@ python scripts/data_structure_analyzer.py
 # Convert to full-column Feather format (recommended)
 python scripts/full_feather_converter.py
 
+# Create project master list (1 row per project)
+python scripts/create_project_master_with_json.py   # Creates 5,664 projects × 95 columns master data
+
 # Search for AI-related projects (legacy method)
 python scripts/feather_ai_search.py
 
@@ -41,6 +44,10 @@ python scripts/ai_ultimate_spreadsheet.py   # Narrow AI search (213 projects: ba
 
 # Verify against RS System official data
 python scripts/rs_official_verification.py   # Verify 100% match with official 152 projects
+
+# Budget Analysis and Statistics
+python scripts/bug_fixed_analysis.py              # Basic descriptive statistics (bug-fixed version)
+python scripts/simple_budget_top1_analysis.py     # Top 1% budget analysis (48 projects, 79.4% of total budget)
 ```
 
 ## Architecture
@@ -161,6 +168,8 @@ The project uses a streamlined 3-stage data processing pipeline for ultimate dat
 - `data/processed/merged_data.csv` - Combined dataset (concatenated, 553,094 records)
 - `data/structure_analysis/` - Detailed data structure analysis
 - `data/full_feather/*.feather` - Complete 444-column Feather tables
+- `data/project_master/` - Project master list (1 row per project)
+  - `rs_project_master_with_details.feather` - 5,664 projects × 95 columns with JSON details
 - `downloads/` - Manual download staging area for ZIP files
 
 #### AI Search Results
@@ -183,6 +192,14 @@ The project uses a streamlined 3-stage data processing pipeline for ultimate dat
 - `data/performance_comparison/` - Method comparison reports
 - `data/rs_official_verification/rs_verification_report.html` - Official verification report
 - `data/rs_official_verification/verification_summary.csv` - Detailed verification results
+
+#### Budget Analysis Reports
+- `data/bug_fixed_analysis/` - Corrected descriptive statistics analysis
+  - `fixed_analysis_report.html` - Bug-fixed statistical analysis report
+  - `fixed_analysis_results.json` - Corrected analysis data
+- `data/budget_analysis_2024/` - 2024 budget analysis results
+  - `top_1_percent_projects_simple.csv` - Top 1% projects list (48 projects)
+  - `top_1_percent_report_simple.html` - Budget concentration analysis report
 
 ## Data Processing Results
 
@@ -210,6 +227,12 @@ Based on actual RS System 2024 data processing:
 - Concatenation preserves all detail records across different data types
 - Budget ID merge provides normalized project-centric view
 - Budget ID merge results match official RS System project count
+
+### 2024 Budget Analysis Results
+- **Total Budget**: 146.6 trillion yen across 4,726 projects with valid budget data
+- **Top 1% Projects**: 48 projects (≥253 billion yen) control 79.4% of total budget
+- **Largest Project**: Basic Pension Benefits (30.04 trillion yen)
+- **Budget Concentration**: Social security projects dominate top spending
 
 ### AI Search Breakthrough Results
 - **Problem Discovery**: Initial AI search found only 57 projects due to restrictive patterns
