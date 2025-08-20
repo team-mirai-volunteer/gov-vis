@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>事業マスターリスト作成レポート</title>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; margin: 20px; background: #f5f5f5; }
+        .container { max-width: 1200px; margin: 0 auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        h1 { color: #2c3e50; text-align: center; border-bottom: 3px solid #3498db; padding-bottom: 15px; }
+        .summary { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 8px; margin: 20px 0; }
+        .metric { display: inline-block; margin: 10px 20px; }
+        .metric-value { font-size: 2em; font-weight: bold; }
+        .metric-label { font-size: 0.9em; opacity: 0.9; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th { background: #34495e; color: white; padding: 12px; text-align: left; }
+        td { padding: 10px; border-bottom: 1px solid #ddd; }
+        tr:hover { background: #f8f9fa; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📊 事業マスターリスト作成レポート</h1>
+        
+        <div class="summary">
+            <h2 style="color: white; margin-top: 0;">作成結果</h2>
+            <div class="metric">
+                <div class="metric-value">5,664</div>
+                <div class="metric-label">事業数</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">95</div>
+                <div class="metric-label">総列数</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">9</div>
+                <div class="metric-label">JSON詳細列</div>
+            </div>
+        </div>
+        
+        <h2>📋 テーブル別データ保有状況</h2>
+        <table>
+            <tr>
+                <th>テーブル名</th>
+                <th>総レコード数</th>
+                <th>データ有り事業数</th>
+                <th>平均レコード/事業</th>
+            </tr>
+
+            <tr>
+                <td>予算・執行サマリ</td>
+                <td>37,981</td>
+                <td>5,664</td>
+                <td>6.7</td>
+            </tr>
+
+            <tr>
+                <td>予算種別・歳出予算項目</td>
+                <td>55,609</td>
+                <td>5,664</td>
+                <td>9.8</td>
+            </tr>
+
+            <tr>
+                <td>目標・実績</td>
+                <td>118,019</td>
+                <td>5,664</td>
+                <td>20.8</td>
+            </tr>
+
+            <tr>
+                <td>目標のつながり</td>
+                <td>28,362</td>
+                <td>5,664</td>
+                <td>5.0</td>
+            </tr>
+
+            <tr>
+                <td>点検・評価</td>
+                <td>5,692</td>
+                <td>5,664</td>
+                <td>1.0</td>
+            </tr>
+
+            <tr>
+                <td>支出情報</td>
+                <td>194,133</td>
+                <td>5,664</td>
+                <td>34.3</td>
+            </tr>
+
+            <tr>
+                <td>支出ブロックのつながり</td>
+                <td>22,662</td>
+                <td>5,664</td>
+                <td>4.0</td>
+            </tr>
+
+            <tr>
+                <td>費目・使途</td>
+                <td>33,986</td>
+                <td>5,664</td>
+                <td>6.0</td>
+            </tr>
+
+            <tr>
+                <td>国庫債務負担行為等による契約</td>
+                <td>9,290</td>
+                <td>5,664</td>
+                <td>1.6</td>
+            </tr>
+
+        </table>
+        
+        <div style="text-align: center; margin-top: 40px; color: #7f8c8d; font-size: 0.9em;">
+            事業マスターリスト作成レポート - RS Visualization System
+        </div>
+    </div>
+</body>
+</html>

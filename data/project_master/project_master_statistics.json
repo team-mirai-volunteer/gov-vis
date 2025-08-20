@@ -1,0 +1,59 @@
+{
+  "base_projects": 5664,
+  "after_basic_merge": {
+    "rows": 5664,
+    "columns": 67
+  },
+  "budget_summary": {
+    "total_records": 37981,
+    "projects_with_data": 5664,
+    "avg_records_per_project": 6.705685028248587
+  },
+  "budget_items": {
+    "total_records": 55609,
+    "projects_with_data": 5664,
+    "avg_records_per_project": 9.817973163841808
+  },
+  "goals_performance": {
+    "total_records": 118019,
+    "projects_with_data": 5664,
+    "avg_records_per_project": 20.836687853107346
+  },
+  "goal_connections": {
+    "total_records": 28362,
+    "projects_with_data": 5664,
+    "avg_records_per_project": 5.007415254237288
+  },
+  "evaluations": {
+    "total_records": 5692,
+    "projects_with_data": 5664,
+    "avg_records_per_project": 1.0049435028248588
+  },
+  "expenditure_info": {
+    "total_records": 194133,
+    "projects_with_data": 5664,
+    "avg_records_per_project": 34.27489406779661
+  },
+  "expenditure_connections": {
+    "total_records": 22662,
+    "projects_with_data": 5664,
+    "avg_records_per_project": 4.001059322033898
+  },
+  "expenditure_details": {
+    "total_records": 33986,
+    "projects_with_data": 5664,
+    "avg_records_per_project": 6.000353107344632
+  },
+  "contracts": {
+    "total_records": 9290,
+    "projects_with_data": 5664,
+    "avg_records_per_project": 1.6401836158192091
+  },
+  "final_structure": {
+    "rows": 5664,
+    "columns": 95,
+    "json_columns": 9,
+    "count_columns": 9,
+    "flag_columns": 9
+  }
+}

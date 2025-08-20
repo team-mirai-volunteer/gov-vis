@@ -65,6 +65,59 @@ python scripts/rs_official_verification.py  # 公式152事業との照合検証
 
 注意: RSシステムはSPA構造のため自動ダウンロードは困難です。手動ダウンロードが確実で推奨されます。
 
+## 📋 推奨データ処理ワークフロー
+
+データをダウンロードしてから最終的な分析可能な形式まで変換する推奨手順：
+
+### ステップ1: データ取得
+```bash
+# 1. RS Systemから手動でZIPファイルをダウンロード
+# 2. downloadsディレクトリに配置
+mkdir downloads
+# ダウンロードしたZIPファイルをdownloadsフォルダに配置
+```
+
+### ステップ2: 基本データ処理
+```bash
+# ZIP展開・CSV抽出（15ファイル、553,094レコード）
+python scripts/process_local_data.py
+# → data/extracted/
+
+# Full Feather変換（444列完全保持、73.8%サイズ削減）
+python scripts/full_feather_converter.py
+# → data/full_feather/
+```
+
+### ステップ3: データ品質検証
+```bash
+# 列完全性検証（CSV→Feather変換時の列保持確認）
+python scripts/column_integrity_check.py
+# → data/column_integrity_check/
+```
+
+### ステップ4: 特化分析（用途に応じて選択）
+```bash
+# AI関連事業検索（狭義：213事業、広義：443事業）
+python scripts/ai_ultimate_spreadsheet.py     # 狭義AI（432列完全スプレッドシート）
+python scripts/improved_ai_search.py          # 広義AI（JSON詳細データ）
+
+# 公式データ検証（RSシステム152事業との100%一致確認）
+python scripts/rs_official_verification.py
+# → data/rs_official_verification/
+```
+
+### ステップ5: 統合データ作成（推奨）
+```bash
+# 事業マスターリスト（1行1事業+JSON詳細保持）
+python scripts/create_project_master_with_json.py
+# → data/project_master/
+```
+
+**最終成果物**: 
+- **5,664事業 × 95列** の事業マスターリスト
+- **基本情報68列** + **JSON詳細9列** + **サマリー18列**
+- **データロスなし**: 複数レコードテーブルをJSON形式で完全保持
+
 ## プロジェクト構造
 
 ```
@@ -73,16 +126,19 @@ rs-visualization/
 │   ├── process_local_data.py        # 基本データ処理（従来方式）
 │   ├── data_structure_analyzer.py  # データ構造詳細分析
 │   ├── full_feather_converter.py   # 全カラムFeather変換（444カラム）
+│   ├── column_integrity_check.py   # 列完全性検証
 │   ├── feather_ai_search.py        # AI関連事業検索
 │   ├── ai_match_investigation.py   # AI検索問題調査
 │   ├── improved_ai_search.py       # 改善されたAI検索
 │   ├── ai_ultimate_spreadsheet.py  # 究極の完全AIスプレッドシート（432列）
 │   ├── rs_official_verification.py  # RS公式データ照合検証
+│   ├── create_project_master_with_json.py # 事業マスターリスト作成
 │   └── performance_comparison_report.py # パフォーマンス比較
 ├── downloads/                       # 手動ダウンロードZIPファイル配置用
 ├── data/
 │   ├── extracted/                   # 解凍された元データ（15ファイル）
 │   ├── full_feather/                # 全カラムFeatherテーブル（444カラム）
+│   ├── column_integrity_check/      # 列完全性検証結果
 │   ├── structure_analysis/          # データ構造分析結果
 │   ├── ai_analysis_feather/         # AI検索結果（従来手法）
 │   ├── ai_investigation/            # AI検索問題調査結果
@@ -90,6 +146,7 @@ rs-visualization/
 │   ├── improved_ai_search/          # 改善されたAI検索結果
 │   ├── ai_ultimate_spreadsheet/     # 究極の完全AIスプレッドシート（432列）
 │   ├── rs_official_verification/    # RS公式データ照合検証結果
+│   ├── project_master/              # 事業マスターリスト（1行1事業+JSON詳細）
 │   ├── performance_comparison/      # パフォーマンス比較レポート
 ├── requirements.txt                 # 基本依存パッケージ
 ├── CLAUDE.md                        # プロジェクト詳細ガイド
@@ -123,6 +180,21 @@ rs-visualization/
 - **比較分析**: 従来手法との詳細パフォーマンス比較
 - **統計レポート**: 府省庁別・用語別・テーブル別の詳細統計
 - **可視化レポート**: HTML形式でのインタラクティブ分析結果
+
+### 5. 事業マスターリスト作成（1行1事業形式）
+- **構造**: 5,664事業 × 95列（基本情報68列 + JSON詳細9列 + サマリー18列）
+- **JSON詳細保持**: 複数レコードテーブルを集約せずJSON形式で完全保持
+  - `budget_summary_json`: 予算・執行サマリの全レコード（平均6.7件/事業）
+  - `goals_performance_json`: 目標・実績の全レコード（平均20.8件/事業）
+  - `expenditure_info_json`: 支出情報の全レコード（平均34.3件/事業）
+  - `evaluations_json`: 点検・評価の全レコード（平均1.0件/事業）
+  - `budget_items_json`: 予算種別・歳出予算項目（平均9.8件/事業）
+  - `goal_connections_json`: 目標のつながり（平均5.0件/事業）
+  - `expenditure_connections_json`: 支出ブロックのつながり（平均4.0件/事業）
+  - `expenditure_details_json`: 費目・使途（平均6.0件/事業）
+  - `contracts_json`: 国庫債務負担行為等による契約（平均1.6件/事業）
+- **利点**: データロスなしで分析用途に最適化、1事業あたり平均88.2レコードの詳細情報を保持
+- **出力形式**: CSV（368.8MB）・Feather（39.2MB、89.4%圧縮）
 
 ## 2024年度データ処理実績
 
@@ -199,6 +271,11 @@ rs-visualization/
 - `data/full_feather/full_feather_metadata.json`: 完全データメタデータ
 - `data/full_feather/column_mapping.json`: カラムマッピング情報
 
+### 列完全性検証結果
+- `data/column_integrity_check/column_integrity_report.html`: 列保持状況の検証レポート
+- `data/column_integrity_check/column_integrity_report.json`: 検証結果データ（JSON形式）
+- `data/column_integrity_check/integrity_summary.txt`: 検証結果サマリー
+
 ### AI関連事業検索結果
 - `data/ai_analysis_feather/ai_related_projects_feather.json`: AI関連事業892件の詳細データ（従来手法）
 - `data/ai_analysis_feather/ai_only_projects_feather.json`: AI限定事業57件の詳細データ（従来手法）
@@ -225,6 +302,13 @@ rs-visualization/
 - `data/rs_official_verification/verification_summary.csv`: 152事業の照合結果詳細
 - `data/rs_official_verification/rs_official_verification_report.json`: 完全な検証データ
 - `data/ai_investigation/AI_record_list.txt`: RSシステム公式AI検索152事業リスト（検証元データ）
+
+### 事業マスターリスト（1行1事業+JSON詳細保持）
+- `data/project_master/rs_project_master_with_details.csv`: 5,664事業×95列のマスターリスト（CSV形式）
+- `data/project_master/rs_project_master_with_details.feather`: 同上（Feather形式、89.4%圧縮）
+- `data/project_master/project_master_statistics.json`: 作成統計情報
+- `data/project_master/project_master_columns.txt`: 95列の詳細構成
+- `data/project_master/project_master_report.html`: 作成レポート
 
 ### パフォーマンス比較
 - `data/performance_comparison/performance_comparison_report.html`: 手法比較の詳細レポート

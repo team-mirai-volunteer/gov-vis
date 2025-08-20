@@ -1,0 +1,108 @@
+事業マスターリスト列構成
+==================================================
+
+総列数: 95
+総事業数: 5664
+
+基本情報列 (68列):
+  - シート種別
+  - 事業年度
+  - 予算事業ID
+  - 事業名
+  - 府省庁の建制順
+  - 政策所管府省庁
+  - 府省庁
+  - 局・庁
+  - 部
+  - 課
+  - 室
+  - 班
+  - 係
+  - 事業の目的
+  - 現状・課題
+  - 事業の概要
+  - 事業概要URL
+  - 事業区分
+  - 事業開始年度
+  - 開始年度不明
+  - 事業終了（予定）年度
+  - 終了予定なし
+  - 主要経費
+  - 備考
+  - 実施方法ー直接実施
+  - 実施方法ー補助
+  - 実施方法ー負担
+  - 実施方法ー交付
+  - 実施方法ー分担金・拠出金
+  - 実施方法ーその他
+  - 旧事業番号
+  - 整理表表示順
+  - 建制順
+  - 所管府省庁
+  - その他担当組織_作成責任者_no
+  - 府省庁（その他担当組織）
+  - 局・庁（その他担当組織）
+  - 部（その他担当組織）
+  - 課（その他担当組織）
+  - 室（その他担当組織）
+  - 班（その他担当組織）
+  - 係（その他担当組織）
+  - 作成責任者
+  - 番号（政策・施策）
+  - 政策所管府省庁_P
+  - 政策
+  - 施策
+  - 政策・施策URL
+  - 番号（根拠法令）
+  - 法令名
+  - 法令番号
+  - 法令ID
+  - 条
+  - 項
+  - 号・号の細分
+  - 番号（関係する計画・通知等）
+  - 計画通知名
+  - 計画通知等URL
+  - 番号（補助率等）
+  - 補助対象
+  - 補助率
+  - 補助上限等
+  - 補助率URL
+  - 番号（関連事業）
+  - 関連事業の事業ID
+  - 関連事業の事業名
+  - 関連性
+  - total_related_records
+
+JSON詳細列 (9列):
+  - budget_summary_json
+  - budget_items_json
+  - goals_performance_json
+  - goal_connections_json
+  - evaluations_json
+  - expenditure_info_json
+  - expenditure_connections_json
+  - expenditure_details_json
+  - contracts_json
+
+件数列 (9列):
+  - budget_summary_count
+  - budget_items_count
+  - goals_performance_count
+  - goal_connections_count
+  - evaluations_count
+  - expenditure_info_count
+  - expenditure_connections_count
+  - expenditure_details_count
+  - contracts_count
+
+データ有無フラグ (9列):
+  - has_budget_summary
+  - has_budget_items
+  - has_goals_performance
+  - has_goal_connections
+  - has_evaluations
+  - has_expenditure_info
+  - has_expenditure_connections
+  - has_expenditure_details
+  - has_contracts
