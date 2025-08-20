@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>事業マスターリスト記述統計分析レポート</title>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; margin: 20px; background: #f9fafb; color: #111827; }
+        .container { max-width: 1200px; margin: 0 auto; background: #ffffff; padding: 30px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        h1 { color: #1f2937; text-align: center; border-bottom: 3px solid #3b82f6; padding-bottom: 15px; }
+        h2 { color: #1f2937; margin-top: 30px; border-left: 5px solid #3b82f6; padding-left: 10px; }
+        .summary { background: #3b82f6; color: white; padding: 20px; border-radius: 8px; margin: 20px 0; }
+        .metric { display: inline-block; margin: 10px 20px; }
+        .metric-value { font-size: 2em; font-weight: bold; }
+        .metric-label { font-size: 0.9em; opacity: 0.9; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th { background: #f3f4f6; color: #1f2937; padding: 12px; text-align: left; border-bottom: 2px solid #e5e7eb; }
+        td { padding: 10px; border-bottom: 1px solid #e5e7eb; color: #374151; }
+        tr:hover { background: #f9fafb; }
+        .insight { background: #eff6ff; border-left: 4px solid #3b82f6; padding: 15px; margin: 10px 0; color: #1e40af; }
+        .code { background: #f3f4f6; padding: 10px; border-radius: 5px; font-family: monospace; color: #111827; }
+        .chart-placeholder { background: #f3f4f6; padding: 40px; text-align: center; border: 2px dashed #d1d5db; margin: 20px 0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📊 事業マスターリスト記述統計分析レポート</h1>
+        
+        <div class="summary">
+            <h2 style="color: white; margin-top: 0;">分析概要</h2>
+
+            <div class="metric">
+                <div class="metric-value">5,664</div>
+                <div class="metric-label">総事業数</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">95</div>
+                <div class="metric-label">総列数</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">68.0%</div>
+                <div class="metric-label">データ完全性</div>
+            </div>
+
+        </div>
+        
+        <h2>🎯 主要Insight</h2>
+        <div class="insight">1. 最多事業府省庁は厚生労働省で1,143事業(20.2%)を占める</div>
+        <div class="insight">2. 府省庁間の事業数格差が大きい（標準偏差 > 平均値）</div>
+        <div class="insight">3. 2023年が事業開始の最頻年度</div>
+        <div class="insight">4. 直接実施が最も多い実施方法(3,535事業)</div>
+        <div class="insight">5. budget_summaryが最高のデータ保有率(100.0%)</div>
+        <div class="insight">6. budget_summaryが最低のデータ保有率(100.0%)</div>
+        <div class="insight">7. データ密度に大きなばらつきあり（最大1064vs平均89.3）</div>
+        <div class="insight">8. 最高データ密度事業: 「北海道開発事業...」(1064レコード)</div>
+        <div class="insight">9. 最強の相関: goals_performance_count と goal_connections_count (r=0.970)</div>
+        <div class="insight">10. データ欠損が多い状況(68.0%)</div>
+        <div class="insight">11. 多数の府省庁が参画(37府省庁)</div>
+        <div class="insight">12. 予算詳細データの充実度が高い</div>
+
+        <h2>🏛️ 府省庁分析</h2>
+        <table>
+            <tr>
+                <th>順位</th>
+                <th>府省庁</th>
+                <th>事業数</th>
+                <th>割合</th>
+            </tr>
+
+            <tr>
+                <td>1</td>
+                <td>厚生労働省</td>
+                <td>1,143</td>
+                <td>3089.2%</td>
+            </tr>
+
+            <tr>
+                <td>2</td>
+                <td>国土交通省</td>
+                <td>625</td>
+                <td>1689.2%</td>
+            </tr>
+
+            <tr>
+                <td>3</td>
+                <td>経済産業省</td>
+                <td>478</td>
+                <td>1291.9%</td>
+            </tr>
+
+            <tr>
+                <td>4</td>
+                <td>外務省</td>
+                <td>449</td>
+                <td>1213.5%</td>
+            </tr>
+
+            <tr>
+                <td>5</td>
+                <td>文部科学省</td>
+                <td>422</td>
+                <td>1140.5%</td>
+            </tr>
+
+            <tr>
+                <td>6</td>
+                <td>防衛省</td>
+                <td>320</td>
+                <td>864.9%</td>
+            </tr>
+
+            <tr>
+                <td>7</td>
+                <td>農林水産省</td>
+                <td>293</td>
+                <td>791.9%</td>
+            </tr>
+
+            <tr>
+                <td>8</td>
+                <td>デジタル庁</td>
+                <td>236</td>
+                <td>637.8%</td>
+            </tr>
+
+            <tr>
+                <td>9</td>
+                <td>内閣府</td>
+                <td>236</td>
+                <td>637.8%</td>
+            </tr>
+
+            <tr>
+                <td>10</td>
+                <td>総務省</td>
+                <td>219</td>
+                <td>591.9%</td>
+            </tr>
+        </table>
+        <h2>📈 データ密度分析</h2>
+        <table>
+            <tr>
+                <th>テーブル名</th>
+                <th>データ保有率</th>
+                <th>平均レコード数/事業</th>
+                <th>最大レコード数</th>
+            </tr>
+
+            <tr>
+                <td>budget_summary</td>
+                <td>100.0%</td>
+                <td>6.7</td>
+                <td>17</td>
+            </tr>
+
+            <tr>
+                <td>budget_items</td>
+                <td>100.0%</td>
+                <td>9.8</td>
+                <td>108</td>
+            </tr>
+
+            <tr>
+                <td>goals_performance</td>
+                <td>100.0%</td>
+                <td>20.8</td>
+                <td>375</td>
+            </tr>
+
+            <tr>
+                <td>goal_connections</td>
+                <td>100.0%</td>
+                <td>5.0</td>
+                <td>87</td>
+            </tr>
+
+            <tr>
+                <td>evaluations</td>
+                <td>100.0%</td>
+                <td>1.0</td>
+                <td>4</td>
+            </tr>
+
+            <tr>
+                <td>expenditure_info</td>
+                <td>100.0%</td>
+                <td>34.3</td>
+                <td>787</td>
+            </tr>
+
+            <tr>
+                <td>expenditure_connections</td>
+                <td>100.0%</td>
+                <td>4.0</td>
+                <td>55</td>
+            </tr>
+
+            <tr>
+                <td>expenditure_details</td>
+                <td>100.0%</td>
+                <td>6.0</td>
+                <td>151</td>
+            </tr>
+
+            <tr>
+                <td>contracts</td>
+                <td>100.0%</td>
+                <td>1.6</td>
+                <td>93</td>
+            </tr>
+        </table>
+        <h2>⚡ 特殊事業（高データ密度）</h2>
+        <table>
+            <tr>
+                <th>事業名</th>
+                <th>府省庁</th>
+                <th>関連レコード数</th>
+            </tr>
+
+            <tr>
+                <td>北海道開発事業...</td>
+                <td>国土交通省</td>
+                <td>1,064</td>
+            </tr>
+
+            <tr>
+                <td>国立研究開発法人宇宙航空研究開発機構運営費交付金に必要な経費...</td>
+                <td>文部科学省</td>
+                <td>892</td>
+            </tr>
+
+            <tr>
+                <td>戦略的イノベーション創造プログラム（エネルギー分野、次世代インフラ分野及び地域資源分野）...</td>
+                <td>内閣府</td>
+                <td>878</td>
+            </tr>
+
+            <tr>
+                <td>農山漁村振興交付金...</td>
+                <td>農林水産省</td>
+                <td>728</td>
+            </tr>
+
+            <tr>
+                <td>鳥獣保護管理対策費...</td>
+                <td>環境省</td>
+                <td>709</td>
+            </tr>
+        </table>
+        <div style="text-align: center; margin-top: 40px; color: #7f8c8d; font-size: 0.9em;">
+            事業マスターリスト記述統計分析レポート - RS Visualization System
+        </div>
+    </div>
+</body>
+</html>

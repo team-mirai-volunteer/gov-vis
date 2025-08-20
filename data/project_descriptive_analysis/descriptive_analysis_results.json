@@ -1,0 +1,688 @@
+{
+  "basic_statistics": {
+    "total_projects": 5664,
+    "total_columns": 95,
+    "missing_values": "172258",
+    "data_completeness": 67.98654475170977
+  },
+  "ministry_analysis": {
+    "total_ministries": 37,
+    "ministry_distribution": {
+      "厚生労働省": 1143,
+      "国土交通省": 625,
+      "経済産業省": 478,
+      "外務省": 449,
+      "文部科学省": 422,
+      "防衛省": 320,
+      "農林水産省": 293,
+      "デジタル庁": 236,
+      "内閣府": 236,
+      "総務省": 219,
+      "環境省": 217,
+      "復興庁": 160,
+      "こども家庭庁": 99,
+      "水産庁": 74,
+      "国土交通省　観光庁": 70,
+      "文化庁": 65,
+      "警察庁": 62,
+      "原子力規制委員会": 54,
+      "財務省": 51,
+      "林野庁": 47,
+      "法務省": 47,
+      "スポーツ庁": 47,
+      "金融庁": 46,
+      "消費者庁": 44,
+      "特許庁": 37,
+      "内閣官房": 29,
+      "消防庁": 27,
+      "国土交通省　海上保安庁": 20,
+      "国土交通省　気象庁": 15,
+      "公正取引委員会": 10,
+      "国税庁": 10,
+      "個人情報保護委員会": 5,
+      "公安調査庁": 3,
+      "公害等調整委員会": 1,
+      "中央労働委員会": 1,
+      "国土交通省　運輸安全委員会": 1,
+      "カジノ管理委員会": 1
+    },
+    "top_10_ministries": {
+      "厚生労働省": 1143,
+      "国土交通省": 625,
+      "経済産業省": 478,
+      "外務省": 449,
+      "文部科学省": 422,
+      "防衛省": 320,
+      "農林水産省": 293,
+      "デジタル庁": 236,
+      "内閣府": 236,
+      "総務省": 219
+    },
+    "ministry_stats": {
+      "mean": 153.0810810810811,
+      "median": 51.0,
+      "std": 230.14046174484864,
+      "max": "1143",
+      "min": "1"
+    }
+  },
+  "project_category_analysis": {
+    "total_categories": 3,
+    "category_distribution": {
+      "前年度事業": 5002,
+      "新規開始事業": 475,
+      "新規要求事業": 187
+    },
+    "category_stats": {
+      "mean": 1888.0,
+      "median": 475.0
+    }
+  },
+  "temporal_analysis": {
+    "start_year_stats": {
+      "min": 1920,
+      "max": 2027,
+      "mean": "2007.3004",
+      "median": "2015.0",
+      "mode": "2023.0"
+    },
+    "decade_distribution": {
+      "1920.0": 19,
+      "1930.0": 10,
+      "1940.0": 104,
+      "1950.0": 219,
+      "1960.0": 132,
+      "1970.0": 221,
+      "1980.0": 141,
+      "1990.0": 278,
+      "2000.0": 950,
+      "2010.0": 1367,
+      "2020.0": 2109
+    },
+    "recent_trend": {
+      "2018.0": 151,
+      "2019.0": 169,
+      "2020.0": 241,
+      "2021.0": 292,
+      "2022.0": 377,
+      "2023.0": 535,
+      "2024.0": 477,
+      "2025.0": 183,
+      "2026.0": 3,
+      "2027.0": 1
+    }
+  },
+  "implementation_method_analysis": {
+    "直接実施": {
+      "count": "3535",
+      "percentage": 62.411723163841806
+    },
+    "補助": {
+      "count": "1818",
+      "percentage": 32.097457627118644
+    },
+    "負担": {
+      "count": "81",
+      "percentage": 1.430084745762712
+    },
+    "交付": {
+      "count": "342",
+      "percentage": 6.038135593220339
+    },
+    "分担金・拠出金": {
+      "count": "177",
+      "percentage": 3.125
+    },
+    "その他": {
+      "count": "386",
+      "percentage": 6.81497175141243
+    }
+  },
+  "data_density_analysis": {
+    "data_availability": {
+      "budget_summary": {
+        "projects_with_data": "5664",
+        "coverage_rate": 100.0,
+        "avg_records_per_project": 6.705685028248587,
+        "max_records": "17",
+        "std_records": 2.363354678579428
+      },
+      "budget_items": {
+        "projects_with_data": "5664",
+        "coverage_rate": 100.0,
+        "avg_records_per_project": 9.817973163841808,
+        "max_records": "108",
+        "std_records": 8.88299093046514
+      },
+      "goals_performance": {
+        "projects_with_data": "5664",
+        "coverage_rate": 100.0,
+        "avg_records_per_project": 20.836687853107346,
+        "max_records": "375",
+        "std_records": 18.99258634075473
+      },
+      "goal_connections": {
+        "projects_with_data": "5664",
+        "coverage_rate": 100.0,
+        "avg_records_per_project": 5.007415254237288,
+        "max_records": "87",
+        "std_records": 4.833510822273072
+      },
+      "evaluations": {
+        "projects_with_data": "5664",
+        "coverage_rate": 100.0,
+        "avg_records_per_project": 1.0049435028248588,
+        "max_records": "4",
+        "std_records": 0.08800733390621018
+      },
+      "expenditure_info": {
+        "projects_with_data": "5664",
+        "coverage_rate": 100.0,
+        "avg_records_per_project": 34.27489406779661,
+        "max_records": "787",
+        "std_records": 51.38984968040081
+      },
+      "expenditure_connections": {
+        "projects_with_data": "5664",
+        "coverage_rate": 100.0,
+        "avg_records_per_project": 4.001059322033898,
+        "max_records": "55",
+        "std_records": 4.596561330263764
+      },
+      "expenditure_details": {
+        "projects_with_data": "5664",
+        "coverage_rate": 100.0,
+        "avg_records_per_project": 6.000353107344632,
+        "max_records": "151",
+        "std_records": 10.818849347304896
+      },
+      "contracts": {
+        "projects_with_data": "5664",
+        "coverage_rate": 100.0,
+        "avg_records_per_project": 1.6401836158192091,
+        "max_records": "93",
+        "std_records": 3.9470424759223035
+      }
+    },
+    "total_records_stats": {
+      "mean": 89.28919491525424,
+      "median": 65.0,
+      "std": 76.47689107318507,
+      "min": "10",
+      "max": "1064",
+      "percentiles": {
+        "25th": 39.0,
+        "75th": 112.0,
+        "90th": 181.69999999999982,
+        "95th": 233.84999999999945
+      }
+    }
+  },
+  "json_data_analysis": {
+    "budget": {
+      "projects_with_budget_data": 5664,
+      "avg_budget_records_per_project": 6.705685028248587,
+      "budget_amounts_found": 325171,
+      "budget_stats": {
+        "mean": 1283548667.8509624,
+        "median": 2021.0,
+        "std": 6114437867.183651,
+        "min": -24609169000.0,
+        "max": 81726513000.0,
+        "count": 321919
+      }
+    },
+    "expenditure": {
+      "projects_with_expenditure_data": 5664,
+      "avg_expenditure_entities_per_project": 11.744703389830509,
+      "expenditure_amounts_found": 191716,
+      "expenditure_diversity_stats": {
+        "mean": 11.744703389830509,
+        "median": 5.0,
+        "max": "184",
+        "min": "0",
+        "std": 16.13587062466656
+      }
+    },
+    "goals": {
+      "projects_with_goals_data": 5664,
+      "avg_goals_per_project": 20.836687853107346,
+      "goals_stats": {
+        "mean": 20.836687853107346,
+        "median": 13.0,
+        "max": "375",
+        "min": "1",
+        "std": 18.990909661312863
+      },
+      "performance_fields_found": 363911
+    }
+  },
+  "outlier_detection": {
+    "high_data_density": {
+      "q95_threshold": 233.84999999999945,
+      "q99_threshold": 380.7399999999998,
+      "high_density_count": 284,
+      "ultra_high_density_count": 57,
+      "top_projects": [
+        {
+          "事業名": "北海道開発事業",
+          "府省庁": "国土交通省",
+          "total_related_records": 1064
+        },
+        {
+          "事業名": "国立研究開発法人宇宙航空研究開発機構運営費交付金に必要な経費",
+          "府省庁": "文部科学省",
+          "total_related_records": 892
+        },
+        {
+          "事業名": "戦略的イノベーション創造プログラム（エネルギー分野、次世代インフラ分野及び地域資源分野）",
+          "府省庁": "内閣府",
+          "total_related_records": 878
+        },
+        {
+          "事業名": "農山漁村振興交付金",
+          "府省庁": "農林水産省",
+          "total_related_records": 728
+        },
+        {
+          "事業名": "鳥獣保護管理対策費",
+          "府省庁": "環境省",
+          "total_related_records": 709
+        }
+      ]
+    },
+    "budget_summary_high_count": {
+      "threshold": 9.0,
+      "count": 658,
+      "top_projects": [
+        {
+          "事業名": "外国人技能実習機構に対する交付金",
+          "府省庁": "厚生労働省",
+          "budget_summary_count": 17
+        },
+        {
+          "事業名": "独立行政法人労働政策研究・研修機構運営費",
+          "府省庁": "厚生労働省",
+          "budget_summary_count": 16
+        },
+        {
+          "事業名": "ハローワークマッチング機能の充実・強化（障害者）",
+          "府省庁": "厚生労働省",
+          "budget_summary_count": 15
+        }
+      ]
+    },
+    "budget_items_high_count": {
+      "threshold": 27.0,
+      "count": 318,
+      "top_projects": [
+        {
+          "事業名": "治安体制の整備に関する経費",
+          "府省庁": "国土交通省　海上保安庁",
+          "budget_items_count": 108
+        },
+        {
+          "事業名": "新卒者等に対する就職支援",
+          "府省庁": "厚生労働省",
+          "budget_items_count": 74
+        },
+        {
+          "事業名": "外国人雇用サービスセンター等運営費",
+          "府省庁": "厚生労働省",
+          "budget_items_count": 72
+        }
+      ]
+    },
+    "goals_performance_high_count": {
+      "threshold": 52.0,
+      "count": 329,
+      "top_projects": [
+        {
+          "事業名": "経済産業政策に関わる拠出金・分担金事業",
+          "府省庁": "経済産業省",
+          "goals_performance_count": 375
+        },
+        {
+          "事業名": "地域子ども・子育て支援に必要な経費",
+          "府省庁": "こども家庭庁",
+          "goals_performance_count": 341
+        },
+        {
+          "事業名": "児童虐待防止対策等総合支援事業",
+          "府省庁": "こども家庭庁",
+          "goals_performance_count": 288
+        }
+      ]
+    },
+    "goal_connections_high_count": {
+      "threshold": 13.0,
+      "count": 296,
+      "top_projects": [
+        {
+          "事業名": "ベース・レジストリ共通費（情報通信技術調達等適正・効率化推進費）",
+          "府省庁": "デジタル庁",
+          "goal_connections_count": 87
+        },
+        {
+          "事業名": "経済産業政策に関わる拠出金・分担金事業",
+          "府省庁": "経済産業省",
+          "goal_connections_count": 86
+        },
+        {
+          "事業名": "地域子ども・子育て支援に必要な経費",
+          "府省庁": "こども家庭庁",
+          "goal_connections_count": 79
+        }
+      ]
+    },
+    "evaluations_high_count": {
+      "threshold": 1.0,
+      "count": 5664,
+      "top_projects": [
+        {
+          "事業名": "地域脱炭素移行・再エネ推進交付金",
+          "府省庁": "環境省",
+          "evaluations_count": 4
+        },
+        {
+          "事業名": "循環型社会形成推進交付金",
+          "府省庁": "環境省",
+          "evaluations_count": 4
+        },
+        {
+          "事業名": "循環型社会形成推進交付金",
+          "府省庁": "復興庁",
+          "evaluations_count": 3
+        }
+      ]
+    },
+    "expenditure_info_high_count": {
+      "threshold": 128.0,
+      "count": 286,
+      "top_projects": [
+        {
+          "事業名": "国立研究開発法人宇宙航空研究開発機構運営費交付金に必要な経費",
+          "府省庁": "文部科学省",
+          "expenditure_info_count": 787
+        },
+        {
+          "事業名": "北海道開発事業",
+          "府省庁": "国土交通省",
+          "expenditure_info_count": 772
+        },
+        {
+          "事業名": "地熱資源開発等事業（うち地熱発電の資源量調査・理解促進事業）",
+          "府省庁": "経済産業省",
+          "expenditure_info_count": 611
+        }
+      ]
+    },
+    "expenditure_connections_high_count": {
+      "threshold": 12.0,
+      "count": 308,
+      "top_projects": [
+        {
+          "事業名": "放送コンテンツ等のネット配信の促進に関する調査研究",
+          "府省庁": "総務省",
+          "expenditure_connections_count": 55
+        },
+        {
+          "事業名": "旅券関連業務",
+          "府省庁": "外務省",
+          "expenditure_connections_count": 48
+        },
+        {
+          "事業名": "被災者支援総合交付金（Ⅰ．１．④被災者生活支援事業）",
+          "府省庁": "復興庁",
+          "expenditure_connections_count": 47
+        }
+      ]
+    },
+    "expenditure_details_high_count": {
+      "threshold": 23.0,
+      "count": 297,
+      "top_projects": [
+        {
+          "事業名": "遺棄化学兵器廃棄処理事業経費",
+          "府省庁": "内閣府",
+          "expenditure_details_count": 151
+        },
+        {
+          "事業名": "次世代火山研究・人材育成総合プロジェクト",
+          "府省庁": "文部科学省",
+          "expenditure_details_count": 137
+        },
+        {
+          "事業名": "戦略的イノベーション創造プログラム（エネルギー分野、次世代インフラ分野及び地域資源分野）",
+          "府省庁": "内閣府",
+          "expenditure_details_count": 133
+        }
+      ]
+    },
+    "contracts_high_count": {
+      "threshold": 3.0,
+      "count": 290,
+      "top_projects": [
+        {
+          "事業名": "通信維持費（空自）",
+          "府省庁": "防衛省",
+          "contracts_count": 93
+        },
+        {
+          "事業名": "火器・装軌車等の修理（装軌車等外注整備）",
+          "府省庁": "防衛省",
+          "contracts_count": 60
+        },
+        {
+          "事業名": "弾薬（海上自衛隊）",
+          "府省庁": "防衛省",
+          "contracts_count": 59
+        }
+      ]
+    }
+  },
+  "correlation_analysis": {
+    "correlation_matrix": {
+      "budget_summary_count": {
+        "budget_summary_count": 1.0,
+        "budget_items_count": 0.4992094863943081,
+        "goals_performance_count": 0.02162061673965416,
+        "goal_connections_count": 0.005477823554574815,
+        "evaluations_count": 0.03925827295701656,
+        "expenditure_info_count": 0.2190774872829857,
+        "expenditure_connections_count": 0.16727813376445277,
+        "expenditure_details_count": 0.20077619839543479,
+        "contracts_count": 0.036084278900357654,
+        "total_related_records": 0.28217999250125964
+      },
+      "budget_items_count": {
+        "budget_summary_count": 0.4992094863943081,
+        "budget_items_count": 1.0,
+        "goals_performance_count": 0.12330370848367798,
+        "goal_connections_count": 0.11260543152416888,
+        "evaluations_count": 0.03412954371074461,
+        "expenditure_info_count": 0.39315418717138645,
+        "expenditure_connections_count": 0.3653251341978842,
+        "expenditure_details_count": 0.21360122161194264,
+        "contracts_count": 0.11441262713167331,
+        "total_related_records": 0.49162333785511947
+      },
+      "goals_performance_count": {
+        "budget_summary_count": 0.02162061673965416,
+        "budget_items_count": 0.12330370848367798,
+        "goals_performance_count": 1.0,
+        "goal_connections_count": 0.9699414721041479,
+        "evaluations_count": 0.020555708923801094,
+        "expenditure_info_count": 0.26472928661413236,
+        "expenditure_connections_count": 0.3008030430754969,
+        "expenditure_details_count": 0.29035328151293216,
+        "contracts_count": -0.031894128928232963,
+        "total_related_records": 0.560057804581381
+      },
+      "goal_connections_count": {
+        "budget_summary_count": 0.005477823554574815,
+        "budget_items_count": 0.11260543152416888,
+        "goals_performance_count": 0.9699414721041479,
+        "goal_connections_count": 1.0,
+        "evaluations_count": 0.017763897051502595,
+        "expenditure_info_count": 0.24999467250183466,
+        "expenditure_connections_count": 0.29210442500684414,
+        "expenditure_details_count": 0.2811821361557253,
+        "contracts_count": -0.0325797503603309,
+        "total_related_records": 0.5409912441922322
+      },
+      "evaluations_count": {
+        "budget_summary_count": 0.03925827295701656,
+        "budget_items_count": 0.03412954371074461,
+        "goals_performance_count": 0.020555708923801094,
+        "goal_connections_count": 0.017763897051502595,
+        "evaluations_count": 1.0,
+        "expenditure_info_count": 0.03612777210226045,
+        "expenditure_connections_count": 0.03490844081619693,
+        "expenditure_details_count": 0.03542129101678622,
+        "contracts_count": -0.0004702954920923879,
+        "total_related_records": 0.043917187322233195
+      },
+      "expenditure_info_count": {
+        "budget_summary_count": 0.2190774872829857,
+        "budget_items_count": 0.39315418717138645,
+        "goals_performance_count": 0.26472928661413236,
+        "goal_connections_count": 0.24999467250183466,
+        "evaluations_count": 0.03612777210226045,
+        "expenditure_info_count": 1.0,
+        "expenditure_connections_count": 0.6311585334609016,
+        "expenditure_details_count": 0.4639955944176113,
+        "contracts_count": 0.22257565773068674,
+        "total_related_records": 0.9210493495415303
+      },
+      "expenditure_connections_count": {
+        "budget_summary_count": 0.16727813376445277,
+        "budget_items_count": 0.3653251341978842,
+        "goals_performance_count": 0.3008030430754969,
+        "goal_connections_count": 0.29210442500684414,
+        "evaluations_count": 0.03490844081619693,
+        "expenditure_info_count": 0.6311585334609016,
+        "expenditure_connections_count": 1.0,
+        "expenditure_details_count": 0.7154012387908326,
+        "contracts_count": 0.04891008055740891,
+        "total_related_records": 0.7287571235877396
+      },
+      "expenditure_details_count": {
+        "budget_summary_count": 0.20077619839543479,
+        "budget_items_count": 0.21360122161194264,
+        "goals_performance_count": 0.29035328151293216,
+        "goal_connections_count": 0.2811821361557253,
+        "evaluations_count": 0.03542129101678622,
+        "expenditure_info_count": 0.4639955944176113,
+        "expenditure_connections_count": 0.7154012387908326,
+        "expenditure_details_count": 1.0,
+        "contracts_count": 0.004014157221035243,
+        "total_related_records": 0.6173948670669145
+      },
+      "contracts_count": {
+        "budget_summary_count": 0.036084278900357654,
+        "budget_items_count": 0.11441262713167331,
+        "goals_performance_count": -0.031894128928232963,
+        "goal_connections_count": -0.0325797503603309,
+        "evaluations_count": -0.0004702954920923879,
+        "expenditure_info_count": 0.22257565773068674,
+        "expenditure_connections_count": 0.04891008055740891,
+        "expenditure_details_count": 0.004014157221035243,
+        "contracts_count": 1.0,
+        "total_related_records": 0.20910574302453444
+      },
+      "total_related_records": {
+        "budget_summary_count": 0.28217999250125964,
+        "budget_items_count": 0.49162333785511947,
+        "goals_performance_count": 0.560057804581381,
+        "goal_connections_count": 0.5409912441922322,
+        "evaluations_count": 0.043917187322233195,
+        "expenditure_info_count": 0.9210493495415303,
+        "expenditure_connections_count": 0.7287571235877396,
+        "expenditure_details_count": 0.6173948670669145,
+        "contracts_count": 0.20910574302453444,
+        "total_related_records": 1.0
+      }
+    },
+    "high_correlations": [
+      {
+        "var1": "goals_performance_count",
+        "var2": "goal_connections_count",
+        "correlation": 0.9699414721041479
+      },
+      {
+        "var1": "goals_performance_count",
+        "var2": "total_related_records",
+        "correlation": 0.560057804581381
+      },
+      {
+        "var1": "goal_connections_count",
+        "var2": "total_related_records",
+        "correlation": 0.5409912441922322
+      },
+      {
+        "var1": "expenditure_info_count",
+        "var2": "expenditure_connections_count",
+        "correlation": 0.6311585334609016
+      },
+      {
+        "var1": "expenditure_info_count",
+        "var2": "total_related_records",
+        "correlation": 0.9210493495415303
+      },
+      {
+        "var1": "expenditure_connections_count",
+        "var2": "expenditure_details_count",
+        "correlation": 0.7154012387908326
+      },
+      {
+        "var1": "expenditure_connections_count",
+        "var2": "total_related_records",
+        "correlation": 0.7287571235877396
+      },
+      {
+        "var1": "expenditure_details_count",
+        "var2": "total_related_records",
+        "correlation": 0.6173948670669145
+      }
+    ],
+    "ministry_data_density": {
+      "mean": {
+        "国土交通省　海上保安庁": 223.65,
+        "公正取引委員会": 195.1,
+        "法務省": 176.62,
+        "国土交通省　気象庁": 147.47,
+        "環境省": 139.12,
+        "林野庁": 129.17,
+        "警察庁": 126.73,
+        "文化庁": 124.17,
+        "農林水産省": 117.65,
+        "スポーツ庁": 105.96
+      },
+      "std": {
+        "国土交通省　海上保安庁": 109.83,
+        "公正取引委員会": 66.8,
+        "法務省": 83.16,
+        "国土交通省　気象庁": 65.5,
+        "環境省": 107.74,
+        "林野庁": 98.51,
+        "警察庁": 78.7,
+        "文化庁": 92.07,
+        "農林水産省": 95.87,
+        "スポーツ庁": 66.6
+      },
+      "count": {
+        "国土交通省　海上保安庁": 20,
+        "公正取引委員会": 10,
+        "法務省": 47,
+        "国土交通省　気象庁": 15,
+        "環境省": 217,
+        "林野庁": 47,
+        "警察庁": 62,
+        "文化庁": 65,
+        "農林水産省": 293,
+        "スポーツ庁": 47
+      }
+    }
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "basic_statistics": {
+    "total_projects": 5664,
+    "total_columns": 95,
+    "missing_values": 172258,
+    "completeness": 68.0,
+    "ministry_analysis": {
+      "total_ministries": 37,
+      "top_10": {
+        "厚生労働省": {
+          "count": 1143,
+          "percentage": 20.2
+        },
+        "国土交通省": {
+          "count": 625,
+          "percentage": 11.0
+        },
+        "経済産業省": {
+          "count": 478,
+          "percentage": 8.4
+        },
+        "外務省": {
+          "count": 449,
+          "percentage": 7.9
+        },
+        "文部科学省": {
+          "count": 422,
+          "percentage": 7.5
+        },
+        "防衛省": {
+          "count": 320,
+          "percentage": 5.6
+        },
+        "農林水産省": {
+          "count": 293,
+          "percentage": 5.2
+        },
+        "デジタル庁": {
+          "count": 236,
+          "percentage": 4.2
+        },
+        "内閣府": {
+          "count": 236,
+          "percentage": 4.2
+        },
+        "総務省": {
+          "count": 219,
+          "percentage": 3.9
+        }
+      },
+      "concentration": {
+        "top_3": 39.6,
+        "top_5": 55.0
+      }
+    }
+  },
+  "data_density": {
+    "budget_summary": {
+      "coverage_rate": 100.0,
+      "avg_records": 6.7,
+      "median_records": 8,
+      "total_records": 37981,
+      "max_records": 17
+    },
+    "budget_items": {
+      "coverage_rate": 100.0,
+      "avg_records": 9.8,
+      "median_records": 7,
+      "total_records": 55609,
+      "max_records": 108
+    },
+    "goals_performance": {
+      "coverage_rate": 100.0,
+      "avg_records": 20.8,
+      "median_records": 13,
+      "total_records": 118019,
+      "max_records": 375
+    },
+    "goal_connections": {
+      "coverage_rate": 100.0,
+      "avg_records": 5.0,
+      "median_records": 3,
+      "total_records": 28362,
+      "max_records": 87
+    },
+    "evaluations": {
+      "coverage_rate": 100.0,
+      "avg_records": 1.0,
+      "median_records": 1,
+      "total_records": 5692,
+      "max_records": 4
+    },
+    "expenditure_info": {
+      "coverage_rate": 100.0,
+      "avg_records": 34.3,
+      "median_records": 16,
+      "total_records": 194133,
+      "max_records": 787
+    },
+    "expenditure_connections": {
+      "coverage_rate": 100.0,
+      "avg_records": 4.0,
+      "median_records": 2,
+      "total_records": 22662,
+      "max_records": 55
+    },
+    "expenditure_details": {
+      "coverage_rate": 100.0,
+      "avg_records": 6.0,
+      "median_records": 2,
+      "total_records": 33986,
+      "max_records": 151
+    },
+    "contracts": {
+      "coverage_rate": 100.0,
+      "avg_records": 1.6,
+      "median_records": 1,
+      "total_records": 9290,
+      "max_records": 93
+    }
+  },
+  "budget_analysis": {}
+}
